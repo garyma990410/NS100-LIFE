@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>百歲人生：平衡之路｜數位版 v2.1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>:root{--bg:#F7F5EF;--panel:#FFFFFF;--ink:#1F2937;--sub:#6B7280;--line:#D9DDE3;--navy:#1F3A5F;--green:#2E8B57;--orange:#E07A1F;--blue:#1F6FB2;--gold:#B8860B;--red:#C0392B;--mist:#EAF3EE;--safe:#E3F0E8;--low:#F6D4D0;--high:#FBE0C2;--shadow:0 6px 24px rgba(31,58,95,.12);--r:16px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161D;--panel:#18212B;--ink:#E8EDF2;--sub:#9AA7B5;--line:#2C3948;--navy:#9CC2F0;--green:#5CC28A;--orange:#F2A04F;--blue:#6BB1EE;--gold:#E3B94A;--red:#EE7B6E;--mist:#1B2B25;--safe:#1D3328;--low:#4A2724;--high:#4A361F;--shadow:0 6px 24px rgba(0,0,0,.4)}}
+:root[data-theme="dark"]{--bg:#10161D;--panel:#18212B;--ink:#E8EDF2;--sub:#9AA7B5;--line:#2C3948;--navy:#9CC2F0;--green:#5CC28A;--orange:#F2A04F;--blue:#6BB1EE;--gold:#E3B94A;--red:#EE7B6E;--mist:#1B2B25;--safe:#1D3328;--low:#4A2724;--high:#4A361F;--shadow:0 6px 24px rgba(0,0,0,.4)}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1100px;margin:0 auto;padding:12px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:10px;padding:8px 12px;flex-wrap:wrap}
+.brand{font-weight:800;color:var(--navy);font-size:18px;display:flex;align-items:center;gap:8px}
+.brand small{font-weight:500;color:var(--sub);font-size:12px}
+.sp{flex:1}
+.btn{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600}
+.btn:hover{border-color:var(--navy)}
+.btn.pri{background:var(--navy);color:var(--bg);border-color:var(--navy)}
+:root[data-theme="dark"] .btn.pri,@media (prefers-color-scheme:dark){.btn.pri{color:#10161D}}
+.btn.on{background:var(--green);color:#fff;border-color:var(--green)}
+.btn.big{padding:12px 22px;font-size:17px}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.pad{padding:14px}
+h2{margin:0 0 8px;font-size:20px;color:var(--navy)} h3{margin:0 0 6px;font-size:16px;color:var(--navy)}
+.muted{color:var(--sub);font-size:14px}
+.grid{display:grid;gap:12px}
+.hero{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);position:relative;background:linear-gradient(180deg,#CDE5DE,#FBF4E1)}
+.hero svg{display:block;width:100%;height:auto}
+.hero .t{position:absolute;left:18px;top:14px;right:18px}
+.hero .t b{display:block;font-size:clamp(26px,6vw,46px);color:#1F3A5F;line-height:1.1}
+.hero .t span{color:#2E6F5E;font-weight:700;font-size:clamp(12px,2.6vw,16px)}
+.seat{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:12px}
+.dot{width:28px;height:28px;border-radius:50%;display:inline-grid;place-items:center;color:#fff;font-weight:800;font-size:13px}
+select,input[type=text],textarea{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:7px 10px;max-width:100%}
+textarea{width:100%;min-height:84px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:7px 14px;font-weight:600}
+.seg button.on{background:var(--navy);color:var(--bg)}
+/* 遊戲畫面 */
+.layout{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:900px){.layout{grid-template-columns:1.25fr 1fr}}
+.steps{display:flex;gap:6px;flex-wrap:wrap}
+.step{padding:4px 10px;border-radius:999px;background:var(--panel);border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--sub)}
+.step.on{background:var(--navy);color:var(--bg);border-color:var(--navy)}
+.board svg{width:100%;height:auto;display:block;border-radius:var(--r)}
+.pl{padding:10px 12px;border-left:6px solid var(--c)}
+.pl.act{outline:3px solid var(--c);outline-offset:-1px}
+.pl .hd{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pl .nm{font-weight:800}
+.tag{font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--sub)}
+.tag.red{color:var(--red);border-color:var(--red)} .tag.gold{color:var(--gold);border-color:var(--gold)}
+.meter{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:6px;margin:5px 0}
+.meter b{font-size:13px}
+.cells{display:grid;grid-template-columns:repeat(13,1fr);gap:2px}
+.cell{height:22px;border-radius:4px;display:grid;place-items:center;font-size:11px;color:var(--sub);background:var(--safe)}
+.cell.lo{background:var(--low)} .cell.hi{background:var(--high)}
+.cell.cur{color:#fff;font-weight:800;font-size:13px;background:var(--c);box-shadow:0 0 0 2px var(--panel),0 0 0 3px var(--c)}
+.chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
+.pc{font-size:12px;font-weight:800;padding:2px 8px;border-radius:8px;border:2px solid var(--c);color:var(--c)}
+.pc.on{background:var(--c);color:#fff} .pc.off{text-decoration:line-through;opacity:.55} .pc.none{opacity:.28;border-style:dashed}
+.log{max-height:240px;overflow:auto;font-size:14px}
+.log div{padding:3px 0;border-bottom:1px dashed var(--line)}
+.log .k-ev{color:var(--navy)} .log .k-bad{color:var(--red)} .log .k-good{color:var(--green)}
+/* 面板 / 浮層 */
+.overlay{position:fixed;inset:0;background:rgba(10,18,28,.55);z-index:50;display:none;align-items:flex-end;justify-content:center;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.overlay.show{display:flex}
+@media(min-width:700px){.overlay{align-items:center}}
+.sheet{background:var(--panel);color:var(--ink);width:100%;max-width:640px;max-height:92%;overflow:auto;border-radius:20px 20px 0 0;padding:16px;box-shadow:var(--shadow)}
+@media(min-width:700px){.sheet{border-radius:20px}}
+.sheet h2{margin-bottom:4px}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:var(--panel);border-radius:14px;padding:10px 12px}
+.opt:hover:not([disabled]){border-color:var(--navy)}
+.opt[disabled]{opacity:.45;cursor:not-allowed}
+.opt.sel{border-color:var(--green);background:var(--mist)}
+.opt b{display:block} .opt small{color:var(--sub)}
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.acol h3{text-align:center;color:#fff;border-radius:10px;padding:4px;margin-bottom:6px}
+.acol .opt{padding:8px;text-align:center}
+.dots{letter-spacing:2px;font-size:12px}
+.pv{font-size:12px;color:var(--sub)} .pv .bad{color:var(--red);font-weight:800}
+.evcard{border:1px solid var(--line);border-top:10px solid var(--c);border-radius:14px;padding:10px 12px;background:var(--panel)}
+.evcard .hd{display:flex;justify-content:space-between;color:var(--sub);font-size:13px;font-weight:700}
+.evcard .ttl{font-size:22px;font-weight:800;color:var(--c);margin:2px 0}
+.fx{background:var(--mist);border-radius:10px;padding:8px 10px;margin:8px 0;font-weight:700}
+.fx div{margin:2px 0}
+.badge{display:inline-block;font-size:12px;font-weight:800;padding:2px 9px;border-radius:999px;margin-right:4px}
+.badge.bad{background:var(--red);color:#fff} .badge.stall{background:#7B2D26;color:#fff} .badge.ok{background:var(--blue);color:#fff}
+.res{margin-top:10px;padding:10px 12px;border-radius:12px;background:var(--mist)}
+.arrow{display:flex;gap:10px;flex-wrap:wrap;font-weight:800}
+.lesson{margin-top:8px;padding:8px 10px;border-left:4px solid var(--gold);background:var(--panel);font-size:14px}
+.up{color:var(--green)} .dn{color:var(--red)}
+.fac{border:2px solid var(--gold);border-radius:var(--r);padding:12px;background:var(--panel)}
+.fac .q{font-size:18px;font-weight:700;color:var(--navy)}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:6px 6px;text-align:center}
+.tbl th{color:var(--sub);font-weight:700}
+.tbl td:first-child,.tbl th:first-child{text-align:left}
+.win{background:var(--mist)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.stat{padding:8px;border:1px solid var(--line);border-radius:12px;text-align:center}
+.stat b{display:block;font-size:22px;color:var(--navy)} .stat span{font-size:12px;color:var(--sub)}
+.qbox{border-left:5px solid var(--green);padding:8px 12px;margin:8px 0;background:var(--mist);border-radius:0 12px 12px 0;font-weight:600}
+.toast{position:fixed;left:50%;transform:translateX(-50%);top:calc(64px + env(safe-area-inset-top,0px));background:var(--navy);color:var(--bg);padding:9px 16px;border-radius:999px;z-index:60;font-weight:700;box-shadow:var(--shadow);max-width:92%;display:none}
+.toast.show{display:block}
+footer{color:var(--sub);font-size:12px;text-align:center;padding:14px 12px 28px}
+.hidden{display:none!important}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--sub)} .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+@media print{header.top,.overlay,.toast,#noprint{display:none!important}body{background:#fff}.card{box-shadow:none}}
+
+@media(max-width:600px){.hero .t{position:static;padding:10px 14px 12px;background:var(--panel)}.hero .t b{font-size:30px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <button class="btn" id="btnHome" aria-label="回首頁" style="border:0;background:transparent;padding:0"><span class="brand">⛰️ 百歲人生：平衡之路 <small>數位版 v2.1</small></span></button>
+  <span class="sp"></span>
+  <button class="btn" id="btnRules">規則速查</button>
+  <button class="btn" id="btnFac">引導師：關</button>
+  <button class="btn" id="btnTheme" aria-label="切換深淺色">◐</button>
+</div></header>
+<main class="wrap" id="main"></main>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast" role="status"></div>
+<footer>NS100 人生馬拉松計畫提案原型｜教學模型，不代表任何保險商品，不構成招攬｜所有資料僅存於本機瀏覽器，不上傳｜卡面與程式由 Claude Sonnet 5.5（Anthropic）輔助製作</footer>
+<script>
+const DATA = {"AX":{"h":"健康","f":"幸福","m":"金錢"},"ROLES":{"ceo":{"name":"公司總經理","short":"總經理","start":{"h":2,"f":5,"m":8},"tag":"高收入・高壓力","trait":"身在高位，資金充裕，但健康已站在下限線上。","need":"壽險／重大傷病、年金；先把健康拉離下限線再投保"},"civil":{"name":"公務員","short":"公務員","start":{"h":6,"f":5,"m":4},"tag":"穩定・均衡","trait":"三軸均衡，收入成長較慢，適合學習規劃。","need":"長照、年金；穩定收入可長期繳費"},"care":{"name":"家庭照顧者","short":"家庭照顧者","start":{"h":6,"f":7,"m":2},"tag":"重關係・現金少","trait":"家庭連結與體力良好，但現金接近下限線。","need":"醫療、意外；先建立現金流再逐步補強"}},"ACTIONS":[{"id":"o1","place":"戶外","lv":1,"name":"慢跑","d":{"h":1},"say":"一雙鞋就能開始，小而持續。"},{"id":"o2","place":"戶外","lv":2,"name":"公路車","d":{"h":2,"m":-1},"say":"裝備與時間都是投資。"},{"id":"o3","place":"戶外","lv":3,"name":"爬山","d":{"h":3,"m":-2},"say":"收穫大，花費也大，量力而為。"},{"id":"h1","place":"家","lv":1,"name":"追劇","d":{"f":1},"say":"喘口氣，但別只剩沙發。"},{"id":"h2","place":"家","lv":2,"name":"陪小孩","d":{"f":2,"h":-1},"say":"陪伴要時間，也要體力。"},{"id":"h3","place":"家","lv":3,"name":"下廚","d":{"f":3,"h":-2},"say":"採買、掌廚、收拾，一桌好菜一身累。"},{"id":"w1","place":"公司","lv":1,"name":"加班","d":{"m":1},"say":"穩定累積，晚點回家。"},{"id":"w2","place":"公司","lv":2,"name":"應酬","d":{"m":2,"f":-1},"say":"人脈變現金，家人等門。"},{"id":"w3","place":"公司","lv":3,"name":"出差","d":{"m":3,"f":-2},"say":"績效亮眼，家裡缺席。"}],"PROT":{"A":{"name":"意外險","full":"意外傷害保障","price":[1,2,3],"renew":1,"limit":3,"time":false,"kind":"實支實付型","color":"E07A1F","cover":"意外事件","no":"疾病、生活習慣失衡、故意行為","ask":"誰最常在通勤、運動與居家發生意外？"},"M":{"name":"醫療險","full":"醫療費用保障","price":[2,3,4],"renew":1,"limit":4,"time":false,"kind":"實支實付型","color":"2E8B57","cover":"住院、手術與醫療事件","no":"收入中斷、非醫療支出、停滯的時間","ask":"醫療費用補得了錢，補得了時間嗎？"},"C":{"name":"壽險・重大傷病險","full":"壽險與重大傷病保障","price":[3,4,5],"renew":1,"limit":4,"time":true,"once":true,"kind":"定額給付型","color":"7B3FA0","cover":"重大疾病、重大傷病（家庭責任）","no":"一般小病、投資虧損、保障對象以外的人","ask":"若你倒下，誰的生活會先受影響？"},"L":{"name":"長照險","full":"長期照顧保障","price":[3,4,5],"renew":1,"limit":4,"time":true,"once":true,"kind":"定額給付型","color":"1F6FB2","cover":"失能、失智與長期照顧事件","no":"短期照護、家人的照顧費用","ask":"你希望由誰、用什麼方式被照顧？","centen":true,"circle":true},"R":{"name":"年金險","full":"長壽現金流保障","price":[2,3,4],"renew":1,"limit":2,"time":false,"kind":"生存給付型","color":"B8860B","cover":"長壽與退休現金流事件","no":"市場投資虧損、詐騙","ask":"活到100歲，現金流夠嗎？","centen":true}},"STAGES":[{"name":"打拚期","range":"25–44歲","from":25,"to":44,"color":"2A9D8F","icon":"嫩芽","bar":"Ⅰ"},{"name":"承擔期","range":"45–64歲","from":45,"to":64,"color":"3D5A98","icon":"樹幹","bar":"Ⅱ"},{"name":"轉換期","range":"65–79歲","from":65,"to":79,"color":"8E5AA8","icon":"年輪","bar":"Ⅲ"},{"name":"長壽期","range":"80–100歲","from":80,"to":100,"color":"B56576","icon":"老樹","bar":"Ⅳ"}],"E":[{"id":"E01","stage":0,"title":"通勤滑倒","type":"意外","scene":"趕著打卡，樓梯口剛拖過地。","mode":"fixed","cover":["A"],"d":{"h":-1,"m":-2},"stall":false,"lesson":"安全習慣是第一層，意外險補財務後果。","lines":["健康－1、金錢－2"],"coverTxt":"可理賠：A","stallAny":false},{"id":"E02","stage":0,"title":"騎車擦撞","type":"意外","scene":"下班路口被後方來車擦撞，需要休養。","mode":"fixed","cover":["A","C"],"d":{"h":-2,"m":-2},"stall":true,"lesson":"實支型補費用，定額型能買回休養的餘裕。","lines":["健康－2、金錢－2；停滯"],"coverTxt":"可理賠：A／C","stallAny":true},{"id":"E03","stage":0,"title":"急性腸胃炎","type":"醫療","scene":"半夜腹痛送急診，住院三天。","mode":"fixed","cover":["M"],"d":{"h":-1,"m":-3},"stall":false,"lesson":"突發醫療費會打亂現金流。","lines":["健康－1、金錢－3"],"coverTxt":"可理賠：M","stallAny":false},{"id":"E04","stage":0,"title":"健檢紅字","type":"健康管理","scene":"報告上有幾項數值標紅。","mode":"choose","cover":[],"d":{},"stall":false,"opts":[{"t":"回診追蹤：金錢－1、健康＋1","d":{"m":-1,"h":1}},{"t":"先忽略：健康－1","d":{"h":-1}}],"lesson":"預防要花時間與資源，但通常更划算。","lines":["擇一：","①回診追蹤：金錢－1、健康＋1","②先忽略：健康－1"],"coverTxt":"—","stallAny":false},{"id":"E05","stage":0,"title":"熬夜趕案","type":"生活習慣","scene":"專案死線前一週，咖啡當飯吃。","mode":"cond","cover":[],"d":{},"stall":false,"br":[{"w":"本輪選公司2或3","test":"work23","d":{"h":-2}},{"w":"否則","d":{"h":-1}}],"nocover":true,"lesson":"保險不能替你睡覺。","lines":["若本輪選公司2或3：健康－2","否則：健康－1"],"coverTxt":"不可保","stallAny":false},{"id":"E06","stage":0,"title":"新生命報到","type":"家庭","scene":"家裡多了一位新成員。","mode":"fixed","cover":[],"d":{"f":2,"m":-2},"stall":false,"lesson":"喜悅與責任常同時到來。","lines":["幸福＋2、金錢－2"],"coverTxt":"—","stallAny":false},{"id":"E07","stage":0,"title":"家人突發住院","type":"照顧","scene":"家人急診住院，你請假陪伴。","mode":"fixed","cover":[],"d":{"f":-1,"m":-2},"stall":false,"nocover":true,"lesson":"保單保障的是被保險人本人，不是他人。","lines":["幸福－1、金錢－2"],"coverTxt":"不可保","stallAny":false},{"id":"E08","stage":0,"title":"轉職機會","type":"機會","scene":"獵人頭來電，薪水更高但步調更快。","mode":"choose","cover":[],"d":{},"stall":false,"opts":[{"t":"接受挑戰：金錢＋2、幸福－1","d":{"m":2,"f":-1}},{"t":"留在原地：幸福＋1","d":{"f":1}}],"lesson":"機會不一定符合你的人生目標。","lines":["擇一：","①接受挑戰：金錢＋2、幸福－1","②留在原地：幸福＋1"],"coverTxt":"—","stallAny":false},{"id":"E09","stage":0,"title":"房貸利率上升","type":"現金流","scene":"每月扣款金額悄悄變多。","mode":"fixed","cover":[],"d":{"m":-2},"stall":false,"nocover":true,"lesson":"一般生活成本不是可保風險。","lines":["金錢－2"],"coverTxt":"不可保","stallAny":false},{"id":"E10","stage":0,"title":"投資詐騙訊息","type":"金融素養","scene":"群組裡有人曬出高報酬截圖。","mode":"choose","cover":[],"d":{},"stall":false,"opts":[{"t":"相信並投入：金錢－3","d":{"m":-3}},{"t":"花時間查證：幸福－1","d":{"f":-1}}],"nocover":true,"lesson":"查證的時間成本遠低於被騙的損失。","lines":["擇一：","①相信並投入：金錢－3","②花時間查證：幸福－1"],"coverTxt":"不可保","stallAny":false},{"id":"E11","stage":0,"title":"老友聚會","type":"正向","scene":"多年沒見的朋友約吃飯。","mode":"cond","cover":[],"d":{},"stall":false,"br":[{"w":"幸福≤4","test":"F<=4","d":{"f":2}},{"w":"否則","d":{"f":1}}],"lesson":"社會支持是長壽人生的重要資產。","lines":["若幸福≤4：幸福＋2","否則：幸福＋1"],"coverTxt":"—","stallAny":false},{"id":"E12","stage":0,"title":"家庭旅行","type":"正向","scene":"全家期待已久的連假。","mode":"choose","cover":[],"d":{},"stall":false,"opts":[{"t":"出遊：金錢－2、幸福＋3","d":{"m":-2,"f":3}},{"t":"在家休息：幸福＋1","d":{"f":1}}],"lesson":"把資源換成共同記憶，也是規劃。","lines":["擇一：","①出遊：金錢－2、幸福＋3","②在家休息：幸福＋1"],"coverTxt":"—","stallAny":false},{"id":"E13","stage":1,"title":"車禍骨折","type":"意外／醫療","scene":"雨天路滑，連環追撞，手術後需長期復健。","mode":"fixed","cover":["A","M","C"],"d":{"h":-2,"m":-3},"stall":true,"lesson":"同一事故可能有多張保單，但各自補的東西不同。","lines":["健康－2、金錢－3；停滯"],"coverTxt":"可理賠：A／M／C","stallAny":true},{"id":"E14","stage":1,"title":"肩頸慢性疼痛","type":"生活習慣","scene":"長年久坐，肩頸痛到睡不著。","mode":"choose","cover":[],"d":{},"stall":false,"opts":[{"t":"復健：金錢－1、健康－1","d":{"m":-1,"h":-1}},{"t":"硬撐：健康－2","d":{"h":-2}}],"nocover":true,"lesson":"工作方式與姿勢要主動調整。","lines":["擇一：","①復健：金錢－1、健康－1","②硬撐：健康－2"],"coverTxt":"不可保","stallAny":false},{"id":"E15","stage":1,"title":"心血管警訊","type":"重大疾病","scene":"胸悶就醫，醫師要你立刻調整生活。","mode":"fixed","cover":["M","C"],"d":{"h":-2,"m":-3},"stall":false,"lesson":"醫療費用與重大傷病保障解決的問題不同。","lines":["健康－2、金錢－3"],"coverTxt":"可理賠：M／C","stallAny":false},{"id":"E16","stage":1,"title":"癌症治療","type":"重大疾病","scene":"確診後需要長期治療與休養。","mode":"fixed","cover":["C","M"],"d":{"h":-3,"f":-1,"m":-4},"stall":true,"lesson":"重大疾病除了醫療費，還有收入中斷與家庭衝擊。","lines":["健康－3、幸福－1、金錢－4；停滯"],"coverTxt":"可理賠：C／M","stallAny":true},{"id":"E17","stage":1,"title":"住院手術","type":"醫療","scene":"需要安排住院手術。","mode":"fixed","cover":["M"],"d":{"h":-1,"m":-3},"stall":false,"lesson":"投保前先弄清楚保障範圍與限額。","lines":["健康－1、金錢－3"],"coverTxt":"可理賠：M","stallAny":false},{"id":"E18","stage":1,"title":"父母需要照顧","type":"長照／家庭","scene":"父母行動不便，需有人長期陪伴。","mode":"fixed","cover":[],"d":{"f":-2,"m":-3},"stall":false,"nocover":true,"lesson":"照顧責任常落在家人身上，所以要及早為自己準備。","lines":["幸福－2、金錢－3"],"coverTxt":"不可保","stallAny":false},{"id":"E19","stage":1,"title":"照顧者喘息不足","type":"照顧","scene":"長期照顧，你已很久沒好好睡一覺。","mode":"cond","cover":[],"d":{},"stall":false,"br":[{"w":"本輪選家2或3","test":"home23","d":{"h":-2}},{"w":"否則","d":{"f":-1}}],"nocover":true,"lesson":"喘息服務與家人分工是風險降低，不是保險。","lines":["若本輪選家2或3：健康－2","否則：幸福－1"],"coverTxt":"不可保","stallAny":false},{"id":"E20","stage":1,"title":"子女教育選擇","type":"家庭財務","scene":"孩子想出國交換一年。","mode":"choose","cover":[],"d":{},"stall":false,"opts":[{"t":"支持：金錢－3、幸福＋2","d":{"m":-3,"f":2}},{"t":"折衷方案：金錢－1","d":{"m":-1}}],"nocover":true,"lesson":"可預期的支出要靠儲蓄目標，不是靠保險。","lines":["擇一：","①支持：金錢－3、幸福＋2","②折衷方案：金錢－1"],"coverTxt":"不可保","stallAny":false},{"id":"E21","stage":1,"title":"全家健康計畫","type":"正向","scene":"你提議全家一起運動。","mode":"choose","cover":[],"d":{},"stall":false,"opts":[{"t":"發起：金錢－1，所有玩家健康＋1，你幸福＋1","d":{"m":-1,"f":1},"everyone":{"h":1}},{"t":"不發起：無事","d":{}}],"lesson":"健康行動可以互相支持。","lines":["擇一：","①發起：金錢－1，所有玩家健康＋1，你幸福＋1","②不發起：無事"],"coverTxt":"—","stallAny":false},{"id":"E22","stage":1,"title":"組織裁員","type":"收入中斷","scene":"公司重整，你被通知不再續聘。","mode":"cond","cover":[],"d":{},"stall":false,"br":[{"w":"金錢≥6","test":"M>=6","d":{"m":-2,"f":-1}},{"w":"否則","d":{"m":-4,"f":-1}}],"nocover":true,"lesson":"預備金能讓你撐過收入中斷。","lines":["若金錢≥6：幸福－1、金錢－2","否則：幸福－1、金錢－4"],"coverTxt":"不可保","stallAny":false},{"id":"E23","stage":1,"title":"投資大跌","type":"市場風險","scene":"持有的標的一週重挫。","mode":"fixed","cover":[],"d":{"m":-3},"stall":false,"nocover":true,"lesson":"投資風險不是保險理賠。","lines":["金錢－3"],"coverTxt":"不可保","stallAny":false},{"id":"E24","stage":1,"title":"工作成就高峰","type":"機會","scene":"你負責的案子大獲成功。","mode":"choose","cover":[],"d":{},"stall":false,"opts":[{"t":"金錢＋3、健康－1","d":{"m":3,"h":-1}},{"t":"金錢＋3、幸福－1","d":{"m":3,"f":-1}}],"lesson":"成就也有看不見的成本。","lines":["擇一：","①金錢＋3、健康－1","②金錢＋3、幸福－1"],"coverTxt":"—","stallAny":false},{"id":"E25","stage":2,"title":"浴室跌倒","type":"意外","scene":"濕滑地板，一個不留神。","mode":"fixed","cover":["A"],"d":{"h":-2,"m":-2},"stall":false,"lesson":"居家防跌是第一層，意外險是財務後盾。","lines":["健康－2、金錢－2"],"coverTxt":"可理賠：A","stallAny":false},{"id":"E26","stage":2,"title":"髖部骨折","type":"意外／醫療","scene":"跌倒後髖部骨折，需要手術與長期復健。","mode":"fixed","cover":["A","M","L"],"d":{"h":-3,"m":-4},"stall":true,"lesson":"高齡意外會改變生活自主性。","lines":["健康－3、金錢－4；停滯"],"coverTxt":"可理賠：A／M／L","stallAny":true},{"id":"E27","stage":2,"title":"白內障手術","type":"醫療","scene":"視力模糊，醫師建議手術。","mode":"fixed","cover":["M"],"d":{"h":-1,"m":-3},"stall":false,"lesson":"常見的疾病，也需要準備。","lines":["健康－1、金錢－3"],"coverTxt":"可理賠：M","stallAny":false},{"id":"E28","stage":2,"title":"中風復健","type":"重大疾病","scene":"突發中風，需要長期復健。","mode":"fixed","cover":["C","M","L"],"d":{"h":-3,"f":-1,"m":-4},"stall":true,"lesson":"治療之外，復健與照顧才是長期課題。","lines":["健康－3、幸福－1、金錢－4；停滯"],"coverTxt":"可理賠：C／M／L","stallAny":true},{"id":"E29","stage":2,"title":"退休金缺口","type":"長壽財務","scene":"月退與存款，比預期花得快。","mode":"fixed","cover":["R"],"d":{"m":-4},"stall":false,"lesson":"活得更久，現金流要撐得更久。","lines":["金錢－4"],"coverTxt":"可理賠：R","stallAny":false},{"id":"E30","stage":2,"title":"通膨侵蝕","type":"長壽財務","scene":"同樣的錢，買到的東西變少了。","mode":"fixed","cover":["R"],"d":{"m":-3},"stall":false,"lesson":"要看購買力，而不只是帳面數字。","lines":["金錢－3"],"coverTxt":"可理賠：R","stallAny":false},{"id":"E31","stage":2,"title":"退休再就業","type":"轉型","scene":"有公司邀請你當顧問。","mode":"choose","cover":[],"d":{},"stall":false,"opts":[{"t":"接受：健康－1、金錢＋2","d":{"h":-1,"m":2}},{"t":"婉拒：幸福＋1","d":{"f":1}}],"lesson":"退休不必等於停止貢獻。","lines":["擇一：","①接受：健康－1、金錢＋2","②婉拒：幸福＋1"],"coverTxt":"—","stallAny":false},{"id":"E32","stage":2,"title":"樂齡學習","type":"轉型","scene":"社區大學開了新課程。","mode":"choose","cover":[],"d":{},"stall":false,"opts":[{"t":"報名：金錢－1、幸福＋2、健康＋1","d":{"m":-1,"f":2,"h":1}},{"t":"不報名：無事","d":{}}],"lesson":"學習有助於保持連結與適應。","lines":["擇一：","①報名：金錢－1、幸福＋2、健康＋1","②不報名：無事"],"coverTxt":"—","stallAny":false},{"id":"E33","stage":2,"title":"志工服務","type":"正向","scene":"社區邀你擔任志工。","mode":"fixed","cover":[],"d":{"f":2},"stall":false,"everyone2":{"f":1},"extra":"其他玩家幸福各＋1","lesson":"價值也來自貢獻與互助。","lines":["幸福＋2","其他玩家幸福各＋1"],"coverTxt":"—","stallAny":false},{"id":"E34","stage":2,"title":"配偶需要照顧","type":"長照／家庭","scene":"另一半行動不便，需要長期陪伴。","mode":"fixed","cover":[],"d":{"f":-2,"m":-3},"stall":false,"nocover":true,"lesson":"照顧是家庭系統的議題，不只是單一個人的。","lines":["幸福－2、金錢－3"],"coverTxt":"不可保","stallAny":false},{"id":"E35","stage":2,"title":"高齡金融詐騙","type":"金融素養","scene":"接到自稱檢警的電話。","mode":"cond","cover":[],"d":{},"stall":false,"br":[{"w":"幸福≤3（較孤立）","test":"F<=3","d":{"m":-4}},{"w":"否則","d":{"m":-2}}],"nocover":true,"lesson":"孤立會提高受騙風險，建立可信任的支持網。","lines":["若幸福≤3（較孤立）：金錢－4","否則：金錢－2"],"coverTxt":"不可保","stallAny":false},{"id":"E36","stage":2,"title":"老友重聚","type":"正向","scene":"同學會上，大家都還在。","mode":"cond","cover":[],"d":{},"stall":false,"br":[{"w":"幸福≥8","test":"F>=8","d":{"f":1}},{"w":"否則","d":{"f":2}}],"lesson":"連結本身就是資產。","lines":["若幸福≥8：幸福＋1","否則：幸福＋2"],"coverTxt":"—","stallAny":false},{"id":"E37","stage":3,"title":"失智照護","type":"長照","scene":"記憶退化，需要全天陪伴。","mode":"fixed","cover":["L"],"d":{"h":-2,"f":-2,"m":-4},"stall":true,"lesson":"認知退化可能帶來長期照護需求。","lines":["健康－2、幸福－2、金錢－4；停滯"],"coverTxt":"可理賠：L","stallAny":true},{"id":"E38","stage":3,"title":"日常生活失能","type":"長照","scene":"穿衣、洗澡、進食都需要協助。","mode":"fixed","cover":["L"],"d":{"h":-2,"m":-4},"stall":true,"lesson":"長照給付與醫療給付的觸發條件不同。","lines":["健康－2、金錢－4；停滯"],"coverTxt":"可理賠：L","stallAny":true},{"id":"E39","stage":3,"title":"肺炎住院","type":"醫療","scene":"感冒轉成肺炎，需要住院。","mode":"fixed","cover":["M"],"d":{"h":-2,"m":-3},"stall":false,"lesson":"高齡時，小病也可能變大事。","lines":["健康－2、金錢－3"],"coverTxt":"可理賠：M","stallAny":false},{"id":"E40","stage":3,"title":"骨質疏鬆骨折","type":"意外／醫療","scene":"彎腰拿東西就骨折。","mode":"fixed","cover":["A","M"],"d":{"h":-2,"m":-3},"stall":false,"lesson":"高齡風險的成因與保障常同時存在。","lines":["健康－2、金錢－3"],"coverTxt":"可理賠：A／M","stallAny":false},{"id":"E41","stage":3,"title":"活得比預期久","type":"長壽財務","scene":"你已超過當初規劃的年齡。","mode":"cond","cover":["R"],"d":{},"stall":false,"br":[{"w":"金錢≤5","test":"M<=5","d":{"m":-3}},{"w":"否則","d":{"m":-1}}],"lesson":"長壽是喜事，也是財務風險。","lines":["若金錢≤5：金錢－3","否則：金錢－1"],"coverTxt":"可理賠：R","stallAny":false},{"id":"E42","stage":3,"title":"生活費用上漲","type":"長壽財務","scene":"醫療與看護費用調漲。","mode":"fixed","cover":["R"],"d":{"m":-3},"stall":false,"lesson":"現金流要能對抗時間。","lines":["金錢－3"],"coverTxt":"可理賠：R","stallAny":false},{"id":"E43","stage":3,"title":"社區共餐","type":"正向","scene":"鄰里一起吃飯聊天。","mode":"fixed","cover":[],"d":{"h":1,"f":1},"stall":false,"lesson":"社區支持可同時改善多個面向。","lines":["健康＋1、幸福＋1"],"coverTxt":"—","stallAny":false},{"id":"E44","stage":3,"title":"傳承安排","type":"家庭財務","scene":"與子女討論資產與意願。","mode":"choose","cover":[],"d":{},"stall":false,"opts":[{"t":"好好談：金錢－2、幸福＋2","d":{"m":-2,"f":2}},{"t":"暫不談：無事","d":{}}],"lesson":"傳承包含溝通、意願與文件準備。","lines":["擇一：","①好好談：金錢－2、幸福＋2","②暫不談：無事"],"coverTxt":"—","stallAny":false},{"id":"E45","stage":3,"title":"曾孫探望","type":"正向","scene":"四代同堂吃團圓飯。","mode":"fixed","cover":[],"d":{"f":2},"stall":false,"lesson":"長壽最珍貴的獎賞之一。","lines":["幸福＋2"],"coverTxt":"—","stallAny":false},{"id":"E46","stage":3,"title":"安寧意願對話","type":"自主規劃","scene":"與家人說出自己想要的照顧方式。","mode":"fixed","cover":[],"d":{"f":2,"h":-1},"stall":false,"lesson":"提早表達意願，降低未來決策衝突。","lines":["健康－1、幸福＋2"],"coverTxt":"—","stallAny":false},{"id":"E47","stage":3,"title":"居家安全改造","type":"預防","scene":"裝上扶手、防滑墊與夜燈。","mode":"fixed","cover":[],"d":{"m":-1,"h":1},"stall":false,"lesson":"預防風險，往往比事後補救便宜。","lines":["健康＋1、金錢－1"],"coverTxt":"—","stallAny":false},{"id":"E48","stage":3,"title":"意外的好消息","type":"正向","scene":"久未聯絡的老朋友寄來照片與問候。","mode":"fixed","cover":[],"d":{"f":1,"h":1},"stall":false,"lesson":"好事也會來，保留自己的力氣迎接它。","lines":["健康＋1、幸福＋1"],"coverTxt":"—","stallAny":false}],"D":[{"id":"D01","axis":"h","dir":"low","title":"急診住院","type":"醫療","scene":"體力透支，半夜被送進急診。","d":{"m":-3},"stall":true,"cover":["M","C"],"lesson":"醫療險補費用，定額給付才能買回休養的時間。","lines":["金錢－3；停滯","事件後若「健康」仍在安全區外，回到3。"],"coverTxt":"可理賠：M／C","stallAny":true},{"id":"D02","axis":"h","dir":"low","title":"慢性病惡化","type":"醫療","scene":"長期忽略的數值終於爆表。","d":{"m":-2,"f":-1},"stall":false,"cover":["M"],"lesson":"小問題拖成大事件。","lines":["幸福－1、金錢－2","事件後若「健康」仍在安全區外，回到3。"],"coverTxt":"可理賠：M","stallAny":false},{"id":"D03","axis":"h","dir":"low","title":"重感染臥床","type":"醫療","scene":"免疫力下降，一場感冒演變成併發症。","d":{"m":-2},"stall":true,"cover":["M","C"],"lesson":"體力是最基本的資本。","lines":["金錢－2；停滯","事件後若「健康」仍在安全區外，回到3。"],"coverTxt":"可理賠：M／C","stallAny":true},{"id":"D04","axis":"h","dir":"low","title":"體力不支跌倒","type":"意外","scene":"頭暈跌倒，傷了腿。","d":{"m":-3},"stall":false,"cover":["A","M"],"lesson":"健康低落時，意外也更容易發生。","lines":["金錢－3","事件後若「健康」仍在安全區外，回到3。"],"coverTxt":"可理賠：A／M","stallAny":false},{"id":"D05","axis":"h","dir":"high","title":"膝關節受損","type":"意外／醫療","scene":"爬山與路跑太拚，膝蓋發出警告。","d":{"h":-2,"m":-2},"stall":true,"cover":["A","M"],"lesson":"過度運動也是一種失衡。","lines":["健康－2、金錢－2；停滯","事件後若「健康」仍在安全區外，回到9。"],"coverTxt":"可理賠：A／M","stallAny":true},{"id":"D06","axis":"h","dir":"high","title":"運動猝發心律不整","type":"重大疾病","scene":"賽後昏倒，被救護車送醫。","d":{"h":-2,"m":-3,"f":-1},"stall":true,"cover":["C","M"],"lesson":"更多不一定更好，要留恢復的空間。","lines":["健康－2、幸福－1、金錢－3；停滯","事件後若「健康」仍在安全區外，回到9。"],"coverTxt":"可理賠：C／M","stallAny":true},{"id":"D07","axis":"h","dir":"high","title":"運動成癮","type":"生活習慣","scene":"每天訓練，家人說你越來越少在家。","d":{"h":-1,"f":-2},"stall":false,"cover":[],"nocover":true,"lesson":"健康是為了生活，而不是取代生活。","lines":["健康－1、幸福－2","事件後若「健康」仍在安全區外，回到9。"],"coverTxt":"不可保","stallAny":false},{"id":"D08","axis":"h","dir":"high","title":"肌腱撕裂","type":"意外","scene":"比賽前加碼訓練，一個爆發動作撕裂肌腱。","d":{"h":-2,"m":-2},"stall":true,"cover":["A","M"],"lesson":"高強度需要漸進與休息。","lines":["健康－2、金錢－2；停滯","事件後若「健康」仍在安全區外，回到9。"],"coverTxt":"可理賠：A／M","stallAny":true},{"id":"D09","axis":"f","dir":"low","title":"親子關係疏離","type":"關係","scene":"孩子對你說：「你都不在。」","d":{"m":-2,"h":-1},"stall":false,"cover":[],"nocover":true,"lesson":"陪伴的缺口，無法用錢補回。","lines":["健康－1、金錢－2","事件後若「幸福」仍在安全區外，回到3。"],"coverTxt":"不可保","stallAny":false},{"id":"D10","axis":"f","dir":"low","title":"情緒低落就醫","type":"醫療","scene":"失眠、胃口差，醫師建議診療。","d":{"m":-2,"h":-1},"stall":false,"cover":["M"],"lesson":"心理健康也是健康。","lines":["健康－1、金錢－2","事件後若「幸福」仍在安全區外，回到3。"],"coverTxt":"可理賠：M","stallAny":false},{"id":"D11","axis":"f","dir":"low","title":"伴侶溝通破裂","type":"關係","scene":"長期的疏離，終於演變成冷戰。","d":{"m":-3},"stall":true,"cover":[],"nocover":true,"lesson":"關係的修復需要時間與對話。","lines":["金錢－3；停滯","事件後若「幸福」仍在安全區外，回到3。"],"coverTxt":"不可保","stallAny":true},{"id":"D12","axis":"f","dir":"low","title":"孤獨引發作息失調","type":"生活習慣","scene":"沒人說話，作息與飲食逐漸崩壞。","d":{"h":-2,"m":-1},"stall":false,"cover":[],"nocover":true,"lesson":"連結是活力資產的一部分。","lines":["健康－2、金錢－1","事件後若「幸福」仍在安全區外，回到3。"],"coverTxt":"不可保","stallAny":false},{"id":"D13","axis":"f","dir":"high","title":"照顧者倦怠","type":"照顧","scene":"把所有時間都給了家人，自己卻累垮了。","d":{"h":-2,"m":-2},"stall":false,"cover":[],"nocover":true,"lesson":"照顧別人，也要留給自己界線與喘息。","lines":["健康－2、金錢－2","事件後若「幸福」仍在安全區外，回到9。"],"coverTxt":"不可保","stallAny":false},{"id":"D14","axis":"f","dir":"high","title":"辭職全職照顧","type":"收入","scene":"為了照顧家人，你選擇離開工作。","d":{"m":-3},"stall":true,"cover":[],"nocover":true,"lesson":"照顧與收入的取捨，要及早與家人討論。","lines":["金錢－3；停滯","事件後若「幸福」仍在安全區外，回到9。"],"coverTxt":"不可保","stallAny":true},{"id":"D15","axis":"f","dir":"high","title":"慢性疲勞就醫","type":"醫療","scene":"長期犧牲睡眠，身體開始反撲。","d":{"h":-2,"m":-2},"stall":false,"cover":["M"],"lesson":"過度承擔，身體會替你說「夠了」。","lines":["健康－2、金錢－2","事件後若「幸福」仍在安全區外，回到9。"],"coverTxt":"可理賠：M","stallAny":false},{"id":"D16","axis":"f","dir":"high","title":"家庭開銷失控","type":"財務","scene":"為了讓大家開心，帳戶默默見底。","d":{"m":-3},"stall":false,"cover":[],"nocover":true,"lesson":"愛要有計畫，才能長久。","lines":["金錢－3","事件後若「幸福」仍在安全區外，回到9。"],"coverTxt":"不可保","stallAny":false},{"id":"D17","axis":"m","dir":"low","title":"信用貸款循環","type":"理財","scene":"以債養債，每月還款壓得喘不過氣。","d":{"f":-2},"stall":false,"cover":[],"nocover":true,"lesson":"現金不足，保險也救不了你。","lines":["幸福－2","事件後若「金錢」仍在安全區外，回到3。"],"coverTxt":"不可保","stallAny":false},{"id":"D18","axis":"m","dir":"low","title":"保單停效","type":"理財","scene":"繳不出保費，保障無聲無息地失效。","d":{"f":-1},"stall":false,"cover":[],"lapse":true,"extra":"若你有有效保障：橫置其中1張（失效）","nocover":true,"lesson":"保障要與負擔能力匹配。","lines":["幸福－1","若你有有效保障：橫置其中1張（失效）","事件後若「金錢」仍在安全區外，回到3。"],"coverTxt":"不可保","stallAny":false},{"id":"D19","axis":"m","dir":"low","title":"低價變賣資產","type":"理財","scene":"急著用錢，只好把資產賤賣。","d":{"h":-1,"f":-1},"stall":false,"cover":[],"nocover":true,"lesson":"預備金是人生的緩衝墊。","lines":["健康－1、幸福－1","事件後若「金錢」仍在安全區外，回到3。"],"coverTxt":"不可保","stallAny":false},{"id":"D20","axis":"m","dir":"low","title":"收入中斷","type":"收入","scene":"資遣、生病或客戶流失，收入驟降。","d":{"f":-1},"stall":true,"cover":[],"nocover":true,"lesson":"緊急預備金能讓你撐得更久。","lines":["幸福－1；停滯","事件後若「金錢」仍在安全區外，回到3。"],"coverTxt":"不可保","stallAny":true},{"id":"D21","axis":"m","dir":"high","title":"過勞罹癌","type":"重大疾病","scene":"拚了十年業績，檢查報告寫著癌症。","d":{"h":-3,"m":-4},"stall":true,"cover":["C","M"],"lesson":"錢可以賺，但身體不能重來。","lines":["健康－3、金錢－4；停滯","事件後若「金錢」仍在安全區外，回到9。"],"coverTxt":"可理賠：C／M","stallAny":true},{"id":"D22","axis":"m","dir":"high","title":"心血管急症","type":"重大疾病","scene":"簽約後倒在會議室。","d":{"h":-2,"m":-3},"stall":false,"cover":["C","M"],"lesson":"高壓與長期疲勞是隱形風險。","lines":["健康－2、金錢－3","事件後若「金錢」仍在安全區外，回到9。"],"coverTxt":"可理賠：C／M","stallAny":false},{"id":"D23","axis":"m","dir":"high","title":"家庭失和","type":"關係","scene":"你賺很多，但家人說他們很想你。","d":{"f":-3},"stall":false,"cover":[],"nocover":true,"lesson":"財富不能取代陪伴。","lines":["幸福－3","事件後若「金錢」仍在安全區外，回到9。"],"coverTxt":"不可保","stallAny":false},{"id":"D24","axis":"m","dir":"high","title":"過勞昏倒","type":"意外／醫療","scene":"加班後開車回家，在路口失去意識。","d":{"h":-2,"m":-2},"stall":true,"cover":["A","M"],"lesson":"過勞也是風險來源。","lines":["健康－2、金錢－2；停滯","事件後若「金錢」仍在安全區外，回到9。"],"coverTxt":"可理賠：A／M","stallAny":true}],"GOALS":[{"id":"G01","name":"活力晚年","cond":"抵達100歲時，健康≥8","part":"健康6–7","ask":"退休後，你最想保留哪些行動能力？"},{"id":"G02","name":"家庭連結","cond":"抵達100歲時，幸福≥8","part":"幸福6–7","ask":"陪伴是時間、金錢，還是表達？"},{"id":"G03","name":"財務餘裕","cond":"抵達100歲時，金錢≥8","part":"金錢6–7","ask":"多少緩衝，能讓你保有選擇？"},{"id":"G04","name":"三角平衡","cond":"抵達100歲時，三軸最高與最低差距≤2","part":"差距3","ask":"你願意犧牲最高軸來補最低軸嗎？"},{"id":"G05","name":"健康投資","cond":"全局戶外1、2、3各至少做1次","part":"完成其中2種","ask":"強度與持續，何者更重要？"},{"id":"G06","name":"家的味道","cond":"全局「下廚」至少做2次","part":"做1次","ask":"家庭儀式如何累積幸福？"},{"id":"G07","name":"職涯韌性","cond":"全局公司1、2、3各至少做1次","part":"完成其中2種","ask":"穩定、應酬與出差如何取捨？"},{"id":"G08","name":"風險拼圖","cond":"抵達100歲時，有效保障≥3種，且含長照險或年金險","part":"有效保障2種","ask":"保障順序應由風險還是偏好決定？"},{"id":"G09","name":"及早準備","cond":"45歲前已投保≥2種，抵達100歲時仍有效","part":"達成其一","ask":"為什麼發生後才準備，通常太晚？"},{"id":"G10","name":"多階人生","cond":"每個人生階段都去過至少2個不同地點","part":"3個階段達成","ask":"你的人生是否被單一角色占滿？"},{"id":"G11","name":"留有餘裕","cond":"全局未曾遇到「失衡事件」","part":"只遇到1次","ask":"你把恢復排進計畫了嗎？"},{"id":"G12","name":"穩健前行","cond":"全局停滯次數≤1","part":"停滯2次","ask":"哪一次停滯最讓你想重來？"}]};
+/* 百歲人生：平衡之路 v2.1 遊戲引擎（與企劃書附錄A規則一致；可在瀏覽器與 Node 執行） */
+const RULES = { safeLo: 2, safeHi: 9, resetLo: 3, resetHi: 9, renewAges: [45, 65, 80], renewCost: 1, maxRounds: 24, spillH: 7, centen: ['L', 'R'], circleCode: 'L', circleH: 1, annuity: 1 };
+const AXES = ['h', 'f', 'm'];
+const clamp = (x) => Math.max(0, Math.min(12, x));
+const stageOf = (age) => (age < 45 ? 0 : age < 65 ? 1 : age < 80 ? 2 : 3);
+function rng(seed) { let a = seed >>> 0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function U(h, f, m, w) { // 電腦玩家的主觀價值
+  const g = (x, wt) => { let v; if (x < 2) v = -9 + 2 * x; else if (x <= 3) v = x - 1; else if (x <= 8) v = x; else if (x === 9) v = 8.2; else v = -4 - (x - 10) * 2; return v * wt; };
+  return g(h, w.h) + g(f, w.f) + g(m, w.m);
+}
+const PRIO = [['A', 'M', 'C', 'L', 'R'], ['M', 'C', 'A', 'L', 'R'], ['L', 'R', 'M', 'C', 'A'], ['L', 'M', 'R', 'A', 'C']];
+const POLICIES = { smart: { ins: 'smart', reserve: 2 }, none: { ins: 'none', reserve: 0 } };
+
+function priceInfo(code, p) {
+  const idx = p.age < 45 ? 0 : p.age < 65 ? 1 : 2; const base = DATA.PROT[code].price[idx];
+  const surcharge = ((code === 'M' || code === 'C') && p.h <= 3) ? 1 : 0;
+  let price = base + surcharge; let discount = 0;
+  if (p.h >= RULES.spillH) { const np = Math.max(1, price - 1); discount = price - np; price = np; }
+  return { base, surcharge, discount, price };
+}
+function testCond(t, p) {
+  switch (t) {
+    case 'work23': return !!(p.last && p.last.place === '公司' && p.last.lv >= 2);
+    case 'home23': return !!(p.last && p.last.place === '家' && p.last.lv >= 2);
+    case 'out3': return !!(p.last && p.last.place === '戶外' && p.last.lv === 3);
+    case 'M>=6': return p.m >= 6; case 'M<=5': return p.m <= 5; case 'F<=3': return p.f <= 3; case 'F<=4': return p.f <= 4; case 'F>=8': return p.f >= 8;
+  }
+  throw new Error('cond ' + t);
+}
+function activeCodes(p) { return Object.keys(p.prot).filter((c) => p.prot[c] === true); }
+function newPlayer(c, i) {
+  const r = DATA.ROLES[c.role];
+  return { idx: i, name: c.name, role: c.role, human: !!c.human, policy: POLICIES[c.policy || 'smart'], h: r.start.h, f: r.start.f, m: r.start.m, age: 25, stalled: false,
+    prot: {}, stalls: 0, fails: 0, acts: [], paid: 0, claims: 0, claimTotal: 0, stallsCanceled: 0, renewedAt: {}, arrived: null, gateFail: 0, early: {},
+    last: null, goal: null, spillUsed: 0, unins: 0, history: [], places: [new Set(), new Set(), new Set(), new Set()], firstBuyAge: null, noCoverLoss: 0, log: [] };
+}
+function evalGoal(g, p) {
+  const v = { h: p.h, f: p.f, m: p.m }; const act = activeCodes(p);
+  const cnt = (pl, lv) => p.acts.filter((id) => { const a = DATA.ACTIONS.find((x) => x.id === id); return a.place === pl && a.lv === lv; }).length;
+  const kinds = (pl) => [1, 2, 3].filter((lv) => cnt(pl, lv) > 0).length;
+  const full = (ok, part) => (ok ? 3 : part ? 1 : 0);
+  switch (g.id) {
+    case 'G01': return full(v.h >= 8, v.h >= 6); case 'G02': return full(v.f >= 8, v.f >= 6); case 'G03': return full(v.m >= 8, v.m >= 6);
+    case 'G04': { const sp = Math.max(v.h, v.f, v.m) - Math.min(v.h, v.f, v.m); return full(sp <= 2, sp === 3); }
+    case 'G05': return full(kinds('戶外') === 3, kinds('戶外') === 2);
+    case 'G06': { const n = p.acts.filter((id) => id === 'h3').length; return full(n >= 2, n === 1); }
+    case 'G07': return full(kinds('公司') === 3, kinds('公司') === 2);
+    case 'G08': return full(act.length >= 3 && (act.includes('L') || act.includes('R')), act.length === 2);
+    case 'G09': { const e = Object.keys(p.early); const still = e.filter((c) => p.prot[c] === true).length; return full(e.length >= 2 && still >= 2, e.length >= 2 || still >= 1); }
+    case 'G10': { const ok = p.places.filter((s) => s.size >= 2).length; return full(ok >= 4, ok === 3); }
+    case 'G11': return full(p.fails === 0, p.fails === 1);
+    case 'G12': return full(p.stalls <= 1, p.stalls === 2);
+  }
+  return 0;
+}
+const baseScore = (p) => p.h + p.f + p.m + 2 * Math.min(p.h, p.f, p.m) + 2 * Math.min(5, activeCodes(p).length);
+function finalScore(p) { const g = p.goal ? evalGoal(DATA.GOALS.find((x) => x.id === p.goal), p) : 0; return { base: baseScore(p), goal: g, total: baseScore(p) + g }; }
+
+/* ui 介面：所有 ask* 皆為 async；notify 為通知（可為 async 以便等待玩家確認） */
+async function runGame(cfg, ui) {
+  const rnd = rng(cfg.seed || 1);
+  const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const decks = {}; const draw = (key, pool) => { if (!decks[key] || !decks[key].length) decks[key] = shuffle(pool); return decks[key].pop(); };
+  const P = cfg.players.map(newPlayer);
+  const G = { P, round: 0, first: Math.floor(rnd() * P.length), over: false, winners: [], rules: RULES, stats: { events: 0, noCover: 0 } };
+  ui.G = G;
+  // 人生目標：每人抽2張留1張
+  const goals = shuffle(DATA.GOALS);
+  for (const p of P) { const two = [goals.pop(), goals.pop()]; p.goal = (p.human ? await ui.askGoal(p, two) : two[Math.floor(rnd() * 2)].id); }
+  await ui.notify('start', { G });
+  const snapshot = () => { for (const p of P) p.history.push({ round: G.round, age: p.age, h: p.h, f: p.f, m: p.m, stalled: p.stalled }); };
+  snapshot();
+  while (G.round < RULES.maxRounds) {
+    G.round++;
+    const order = [0, 1, 2].map((i) => P[(G.first + i) % 3]);
+    G.order = order; await ui.notify('roundStart', { G, order });
+    // ① 保障階段
+    for (const p of order) {
+      if (p.arrived) continue;
+      await ui.notify('turn', { p, step: 'protect' });
+      if (RULES.renewAges.includes(p.age) && !p.renewedAt[p.age]) {
+        p.renewedAt[p.age] = true;
+        const act = activeCodes(p); const free = act.filter((c) => p.age === 80 && RULES.centen.includes(c)); const need = act.filter((c) => !free.includes(c));
+        if (free.length) await ui.notify('centen', { p, codes: free });
+        if (need.length) {
+          let keep;
+          if (p.human) keep = await ui.askRenew(p, need); else keep = p.policy.ins !== 'none' ? need : [];
+          for (const c of need) { if (keep.includes(c) && p.m >= RULES.renewCost) { p.m -= RULES.renewCost; p.paid += RULES.renewCost; } else p.prot[c] = false; }
+          await ui.notify('renewed', { p, need, kept: need.filter((c) => p.prot[c] === true) });
+        }
+      }
+      if (p.age >= 65 && p.prot.R === true) {
+        let ax;
+        if (p.human) ax = await ui.askAnnuity(p);
+        else { let b = null, bs = -1e9; for (const a of ['m', 'f']) { const v = { h: p.h, f: p.f, m: p.m }; v[a] = clamp(v[a] + 1); const sc = U(v.h, v.f, v.m, { h: 1, f: 1, m: 1 }) + rnd() * 0.1; if (sc > bs) { bs = sc; b = a; } } ax = b; }
+        p[ax] = clamp(p[ax] + RULES.annuity); await ui.notify('annuity', { p, ax });
+      }
+      let buy = null;
+      if (p.human) buy = await ui.askBuy(p);
+      else if (p.policy.ins !== 'none') {
+        for (const code of PRIO[stageOf(p.age)]) { if (p.prot[code] === true) continue; const pi = priceInfo(code, p); if (p.m - pi.price >= p.policy.reserve) { buy = code; break; } }
+      }
+      if (buy) {
+        const pi = priceInfo(buy, p);
+        if (p.m >= pi.price && p.prot[buy] !== true) {
+          p.m -= pi.price; p.paid += pi.price; p.prot[buy] = true; if (pi.discount) p.spillUsed++;
+          if (p.age < 45) p.early[buy] = 1; if (p.firstBuyAge === null) p.firstBuyAge = p.age;
+          await ui.notify('bought', { p, code: buy, pi });
+        }
+      }
+    }
+    // ② 行動（同時選擇、同時亮牌）
+    const choices = new Map();
+    for (const p of order) {
+      if (p.arrived) continue;
+      if (p.human) { choices.set(p, await ui.askAction(p)); continue; }
+      const w = { h: 1, f: 1, m: 1 }; const want = PRIO[stageOf(p.age)].some((c) => p.prot[c] !== true); if (p.policy.ins !== 'none' && want) w.m = 1.35;
+      let best = null, bs = -1e9;
+      for (const a of DATA.ACTIONS) { const s = U(clamp(p.h + (a.d.h || 0)), clamp(p.f + (a.d.f || 0)), clamp(p.m + (a.d.m || 0)), w) + rnd() * 0.3; if (s > bs) { bs = s; best = a; } }
+      choices.set(p, best.id);
+    }
+    const reveal = [];
+    for (const p of order) {
+      if (p.arrived) continue; const a = DATA.ACTIONS.find((x) => x.id === choices.get(p));
+      const before = { h: p.h, f: p.f, m: p.m };
+      for (const k of AXES) p[k] = clamp(p[k] + (a.d[k] || 0));
+      p.last = a; p.acts.push(a.id); p.places[stageOf(p.age)].add(a.place); reveal.push({ p, a, before });
+    }
+    await ui.notify('reveal', { reveal });
+    // ③④ 平衡檢查與事件
+    for (const p of order) {
+      if (p.arrived) continue;
+      let worst = null, wd = 0;
+      for (const ax of AXES) { const v = p[ax]; let dist = 0, dir = null; if (v < RULES.safeLo) { dist = RULES.safeLo - v; dir = 'low'; } else if (v > RULES.safeHi) { dist = v - RULES.safeHi; dir = 'high'; } if (dist > wd || (dist === wd && dist > 0 && rnd() < 0.5)) { wd = dist; worst = { ax, dir }; } }
+      let ev, failing = null;
+      if (worst && wd > 0) { ev = draw('D' + worst.ax + worst.dir, DATA.D.filter((x) => x.axis === worst.ax && x.dir === worst.dir)); failing = worst; p.fails++; }
+      else ev = draw('E' + stageOf(p.age), DATA.E.filter((x) => x.stage === stageOf(p.age)));
+      G.stats.events++;
+      await ui.notify('eventDrawn', { p, ev, failing });
+      await resolveEvent(p, ev, failing, G, ui, rnd);
+    }
+    // ⑤ 成長
+    const arrivedNow = [];
+    for (const p of order) {
+      if (p.arrived) continue;
+      const bonus = async () => { let ax; if (p.human) ax = await ui.askBonus(p); else { let b = null, bs = -1e9; for (const a of AXES) { const v = { h: p.h, f: p.f, m: p.m }; v[a] = clamp(v[a] + 1); const sc = U(v.h, v.f, v.m, { h: 1, f: 1, m: 1 }) + rnd() * 0.1; if (sc > bs) { bs = sc; b = a; } } ax = b; } p[ax] = clamp(p[ax] + 1); return ax; };
+      let moved = false, why = '';
+      if (p.stalled) { p.stalled = false; p.stalls++; why = 'stall'; }
+      else if (p.age + 5 >= 100 && ![p.h, p.f, p.m].every((x) => x >= RULES.safeLo && x <= RULES.safeHi)) { p.gateFail++; why = 'gate'; }
+      else { p.age += 5; moved = true; }
+      const ax = await bonus();
+      if (moved && p.age >= 100) { p.arrived = G.round; arrivedNow.push(p); }
+      await ui.notify('grow', { p, moved, why, ax });
+    }
+    G.first = (G.first + 1) % P.length; snapshot();
+    await ui.notify('roundEnd', { G });
+    if (arrivedNow.length) { G.winners = arrivedNow; break; }
+  }
+  G.over = true;
+  let pool = G.winners.length ? G.winners : [...P].sort((a, b) => b.age - a.age || finalScore(b).total - finalScore(a).total).slice(0, 1);
+  const key = (p) => [finalScore(p).total, Math.min(p.h, p.f, p.m)];
+  pool = [...pool].sort((a, b) => key(b)[0] - key(a)[0] || key(b)[1] - key(a)[1]);
+  const top = key(pool[0]); G.champions = pool.filter((p) => key(p)[0] === top[0] && key(p)[1] === top[1]); G.tie = G.winners.length > 1;
+  await ui.notify('gameOver', { G });
+  return G;
+}
+
+async function resolveEvent(p, ev, failing, G, ui, rnd) {
+  const P = G.P; const d = { h: 0, f: 0, m: 0 }; let stall = !!ev.stall; let everyone = null, everyone2 = null; const notes = []; let picked = null;
+  const add = (x) => { for (const k of AXES) d[k] += (x[k] || 0); };
+  const affordable = (o) => !((o.d.m || 0) < 0 && /支付|金錢－/.test(o.t) && p.m < -(o.d.m || 0));
+  if (ev.mode === 'choose') {
+    let idx;
+    if (p.human) idx = await ui.askOption(p, ev, ev.opts.map(affordable));
+    else { let bs = -1e9; idx = -1; ev.opts.forEach((o, i) => { if (!affordable(o)) return; const s = U(clamp(p.h + (o.d.h || 0)), clamp(p.f + (o.d.f || 0)), clamp(p.m + (o.d.m || 0)), { h: 1, f: 1, m: 1 }) + rnd() * 0.2; if (s > bs) { bs = s; idx = i; } }); if (idx < 0) idx = ev.opts.length - 1; }
+    if (!affordable(ev.opts[idx]) && ev.opts.some(affordable)) idx = ev.opts.findIndex(affordable); if (!ev.opts.some(affordable)) idx = ev.opts.length - 1;
+    const best = ev.opts[idx]; picked = idx; add(best.d); if (best.d.stall || best.stall) stall = true; if (best.everyone) everyone = best.everyone; if (ev.everyone && idx === 0) everyone = ev.everyone;
+    notes.push('選擇：' + best.t);
+  } else if (ev.mode === 'cond') {
+    let br = null; for (const b of ev.br) { if (!b.test || testCond(b.test, p)) { br = b; break; } } if (!br) br = ev.br[ev.br.length - 1];
+    add(br.d); if (br.stall) stall = true; notes.push('條件：' + br.w);
+  } else add(ev.d);
+  if (ev.everyone2) everyone2 = ev.everyone2;
+  // 保障理賠（最多1張）
+  let used = null, pay = 0, canceled = false, svc = 0;
+  const loss = Math.max(0, -d.m);
+  const eligible = (ev.cover || []).filter((c) => p.prot[c] === true && (loss > 0 || (DATA.PROT[c].time && stall)));
+  if (eligible.length) {
+    let code = null;
+    if (p.human) code = await ui.askClaim(p, ev, eligible, { loss, stall });
+    else { let bv = 0; for (const c of eligible) { const pc = DATA.PROT[c]; const v = Math.min(pc.limit, loss) + ((pc.time && stall) ? 2.5 : 0); if (v > bv) { bv = v; code = c; } } }
+    if (code) {
+      const pc = DATA.PROT[code]; pay = Math.min(pc.limit, loss); d.m += pay; p.claims++; p.claimTotal += pay;
+      if (code === RULES.circleCode) { d.h += RULES.circleH; svc = RULES.circleH; }
+      if (pc.time && stall) { stall = false; canceled = true; p.stallsCanceled++; }
+      used = code; if (pc.once) delete p.prot[code];
+    }
+  }
+  const insured = !!used; const unins = /不可保/.test(ev.coverTxt || '') || ev.nocover; if (unins && (d.h < 0 || d.f < 0 || d.m < 0)) { p.unins++; G.stats.noCover++; }
+  if (!used && ev.cover && ev.cover.length && (loss > 0 || stall)) p.noCoverLoss = (p.noCoverLoss || 0) + 1;
+  let lapsed = null;
+  if (ev.lapse) { const act = activeCodes(p); if (act.length) { lapsed = p.human && act.length > 1 ? await ui.askLapse(p, act) : act.sort((a, b) => DATA.PROT[a].price[0] - DATA.PROT[b].price[0])[0]; p.prot[lapsed] = false; } }
+  const before = { h: p.h, f: p.f, m: p.m };
+  for (const k of AXES) p[k] = clamp(p[k] + d[k]);
+  const others = [];
+  if (everyone) for (const q of P) if (!q.arrived) { for (const k of AXES) q[k] = clamp(q[k] + (everyone[k] || 0)); }
+  if (everyone2) for (const q of P) if (q !== p && !q.arrived) { for (const k of AXES) q[k] = clamp(q[k] + (everyone2[k] || 0)); others.push(q); }
+  let reset = null;
+  if (failing) { const ax = failing.ax; if (failing.dir === 'low' && p[ax] < RULES.safeLo) { p[ax] = RULES.resetLo; reset = ax; } if (failing.dir === 'high' && p[ax] > RULES.safeHi) { p[ax] = RULES.resetHi; reset = ax; } }
+  if (stall) p.stalled = true;
+  const res = { d, before, after: { h: p.h, f: p.f, m: p.m }, stall, used, pay, canceled, svc, lapsed, reset, notes, picked, everyone, everyone2, insured, unins, loss };
+  p.log.push({ round: G.round, age: p.age, ev: ev.id, title: ev.title, used, unins, stall });
+  await ui.notify('eventResolved', { p, ev, failing, res });
+  return res;
+}
+if (typeof module !== 'undefined' && typeof window === 'undefined') module.exports = { runGame, RULES, priceInfo, evalGoal, finalScore, activeCodes, stageOf, U, rng, baseScore, setData: (d) => { global.DATA = d; } };
+
+/* ===== UI ===== */
+const $ = (s, r = document) => r.querySelector(s);
+const AXN = { h: '健康', f: '幸福', m: '金錢' };
+const AXC = { h: 'var(--green)', f: 'var(--orange)', m: 'var(--blue)' };
+const SEATC = ['#E07A1F', '#2E8B57', '#1F6FB2'];
+const PCOL = (c) => '#' + DATA.PROT[c].color;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const store = { get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* 忽略 */ } } };
+const S = { cfg: null, G: null, step: 0, active: null, facilOn: store.get('ns100.facil', false), speed: store.get('ns100.speed', 'fast'), seen: {}, facLog: [], timer: { phase: 0, left: 600, run: false } };
+const STEPS = ['① 保障', '② 行動', '③ 檢查', '④ 事件', '⑤ 成長'];
+const PHASES = [['破冰', 10], ['規則示範', 10], ['遊戲體驗', 50], ['復盤對話', 20], ['行動承諾', 10]];
+const humans = () => (S.G ? S.G.P.filter((p) => p.human) : []);
+const seatColor = (p) => SEATC[p.idx % 3];
+
+/* ---------- 浮層 ---------- */
+function ask(html, collect) {
+  return new Promise((resolve) => {
+    const ov = $('#overlay'), sh = $('#sheet'); sh.innerHTML = html; ov.classList.add('show'); sh.scrollTop = 0;
+    const done = (v) => { ov.classList.remove('show'); sh.onclick = null; resolve(collect ? collect(v) : v); };
+    sh.onclick = (e) => { const t = e.target.closest('[data-v]'); if (!t || t.disabled) return; if (t.dataset.toggle !== undefined) { t.classList.toggle('sel'); const b = sh.querySelector('[data-confirm]'); if (b) b.textContent = b.dataset.base.replace('{n}', sh.querySelectorAll('[data-toggle].sel').length); return; } done(t.dataset.v); };
+  });
+}
+function toast(msg, ms = 1500) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), ms); }
+async function handoff(p, what) {
+  if (humans().length < 2) return;
+  await ask(`<h2>請交給「${esc(p.name)}」</h2><p class="muted">${what || '接下來是個人選擇，請其他玩家先迴避畫面。'}</p><div class="opts"><button class="opt" data-v="ok"><b>我是 ${esc(p.name)}，開始</b></button></div>`);
+}
+
+/* ---------- 共用片段 ---------- */
+const chip = (c, cls = 'on') => `<span class="pc ${cls}" style="--c:${PCOL(c)}">${c}</span>`;
+const fxLine = (d) => ['h', 'f', 'm'].filter((k) => d[k]).map((k) => `<span class="${d[k] > 0 ? 'up' : 'dn'}">${AXN[k]}${d[k] > 0 ? '＋' : '－'}${Math.abs(d[k])}</span>`).join('　') || '<span class="muted">無變化</span>';
+const vals = (o) => `H${o.h}／F${o.f}／M${o.m}`;
+function valTxt(v, o = {}) { const bad = v < RULES.safeLo || v > RULES.safeHi; return `<span class="${bad ? 'bad' : ''}">${v}</span>`; }
+function evCard(ev, failing) {
+  if (!failing && ev.axis) failing = { ax: ev.axis, dir: ev.dir };
+  const st = failing ? null : DATA.STAGES[ev.stage]; const col = failing ? '#C0392B' : '#' + st.color;
+  const head = failing ? `失衡事件・${AXN[failing.ax]}${failing.dir === 'low' ? '不足' : '過載'}` : `${st.bar} ${st.name} ${st.range}`;
+  const cov = ev.cover && ev.cover.length ? `<span class="muted">可理賠：</span>${ev.cover.map((c) => chip(c, 'on')).join('')}` : (/不可保/.test(ev.coverTxt || '') ? '<span class="badge bad">不可保</span>' : '');
+  return `<div class="evcard" style="--c:${col}"><div class="hd"><span>${head}</span><span>${ev.id}・${esc(ev.type)}</span></div><div class="ttl">${esc(ev.title)}</div><div class="muted">${esc(ev.scene)}</div><div class="fx">${ev.lines.map((l) => `<div>${esc(l)}</div>`).join('')}</div><div>${cov} ${ev.stallAny ? '<span class="badge stall">停滯</span>' : ''}</div></div>`;
+}
+function resBox(res, p) {
+  const k = ['h', 'f', 'm'];
+  return `<div class="res"><div class="arrow">${k.map((x) => `<span>${AXN[x]} ${res.before[x]}→${res.after[x]}</span>`).join('')}</div>`
+    + (res.used ? `<div style="margin-top:6px">${chip(res.used)} 理賠減免金錢損失 <b>${res.pay}</b>${res.canceled ? '，<b>取消停滯</b>' : ''}${res.svc ? '，守護圈服務：健康＋' + res.svc : ''}${DATA.PROT[res.used].once ? '（一次性給付，保障卡返回供應區）' : ''}</div>` : (res.unins ? '<div style="margin-top:6px"><span class="badge bad">不可保</span> 這類損失只能自己承擔</div>' : ''))
+    + (res.stall ? '<div style="margin-top:6px"><span class="badge stall">停滯</span> 本輪年齡棋不前進</div>' : '')
+    + (res.lapsed ? `<div style="margin-top:6px">保單停效：${chip(res.lapsed, 'off')} 已失效</div>` : '')
+    + (res.reset ? `<div style="margin-top:6px">失衡收尾：${AXN[res.reset]}回到邊界 ${res.after[res.reset]}</div>` : '')
+    + (res.everyone2 ? '<div style="margin-top:6px">其他玩家也獲得效果</div>' : '') + '</div>';
+}
+
+/* ---------- 引導師 ---------- */
+const FAC = {
+  firstBuy: ['第一次有人買保障', '你為什麼先買這張？是怕哪一種風險？'],
+  renew45: ['45 歲第一次續保', '續保要付錢，你還想留著每一張嗎？留不留的依據是什麼？'],
+  unins: ['有人遇到「不可保」事件', '如果這種事發生在現實裡，你原本是怎麼準備的？'],
+  cancel: ['有人用定額型保障取消停滯', '你買到的是什麼——錢，還是時間？'],
+  gate: ['有人被百歲檢核擋下', '你把哪一條軸換成了速度？'],
+  centen: ['80 歲長年期保障免續保', '保障延長到 100 歲，你會怎麼規劃 80 歲之後的保障？'],
+  spill: ['有人用到外溢折抵', '為了折扣去運動，和為了健康去運動，有什麼不同？'],
+  circle: ['有人觸發守護圈服務', '保險金給的是錢，服務給的是什麼？你需要哪一種？'],
+};
+async function facil(key, p, cap = 1) {
+  if (!S.facilOn) return; S.seen[key] = (S.seen[key] || 0) + 1; if (S.seen[key] > cap) return;
+  const [when, q] = FAC[key]; S.facLog.unshift({ when, q, who: p ? p.name : '', t: Date.now() }); renderFacil();
+  await ask(`<h2>講師提問</h2><div class="muted">${esc(when)}${p ? '（' + esc(p.name) + '）' : ''}</div><div class="fac q" style="margin-top:10px">${esc(q)}</div><div class="opts"><button class="opt" data-v="ok"><b>討論完畢，繼續遊戲</b></button></div>`);
+}
+function renderFacil() {
+  const el = $('#facil'); if (!el) return; el.classList.toggle('hidden', !S.facilOn); if (!S.facilOn) return;
+  const t = S.timer; const mm = String(Math.floor(t.left / 60)).padStart(2, '0'), ss = String(t.left % 60).padStart(2, '0');
+  el.innerHTML = `<h3>講師面板</h3><div class="row"><b>${PHASES[t.phase][0]}</b><span class="tag gold">${mm}:${ss}</span><button class="btn" data-fa="run">${t.run ? '暫停' : '開始'}</button><button class="btn" data-fa="next">下一段</button></div><div class="muted" style="margin-top:6px">${PHASES.map((p, i) => (i === t.phase ? '<b>' + p[0] + '</b>' : p[0]) + ' ' + p[1] + '分').join('　')}</div>` + (S.facLog.length ? `<div class="log" style="margin-top:8px;max-height:120px">${S.facLog.slice(0, 6).map((x) => `<div><b>${esc(x.when)}</b>：${esc(x.q)}</div>`).join('')}</div>` : '<div class="muted" style="margin-top:6px">提問會在關鍵時刻自動跳出，並記錄在這裡。</div>');
+}
+setInterval(() => { if (S.timer.run && S.timer.left > 0) { S.timer.left--; renderFacil(); } }, 1000);
+document.addEventListener('click', (e) => { const b = e.target.closest('[data-fa]'); if (!b) return; if (b.dataset.fa === 'run') S.timer.run = !S.timer.run; if (b.dataset.fa === 'next') { S.timer.phase = Math.min(PHASES.length - 1, S.timer.phase + 1); S.timer.left = PHASES[S.timer.phase][1] * 60; } renderFacil(); });
+
+/* ---------- 版圖 ---------- */
+const ST = (() => { const rows = [[515, [125, 341, 558, 775], [25, 30, 35, 40]], [430, [700, 533, 366, 200], [45, 50, 55, 60]], [345, [260, 386, 513, 640], [65, 70, 75, 80]], [260, [585, 467, 350], [85, 90, 95]]]; const o = {}; rows.forEach(([y, xs, ag]) => xs.forEach((x, i) => { o[ag[i]] = [x, y]; })); o[100] = [450, 172]; return o; })();
+function boardSVG() {
+  const P = S.G ? S.G.P : [];
+  const ages = Object.keys(ST).map(Number).sort((a, b) => a - b);
+  const stc = (a) => '#' + DATA.STAGES[stageOf(a)].color;
+  let s = `<svg viewBox="0 0 900 640" role="img" aria-label="百歲登山步道主版圖"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CDE5DE"/><stop offset="1" stop-color="#FBF4E1"/></linearGradient></defs><rect width="900" height="640" fill="url(#sk)"/><circle cx="780" cy="110" r="70" fill="#F4C430" opacity=".25"/><circle cx="780" cy="110" r="40" fill="#F0B428"/>`
+    + `<polygon points="0,420 130,300 240,380 330,250 430,400 520,320 640,420 760,300 900,380 900,640 0,640" fill="#CFE3DC"/><polygon points="20,610 280,380 450,110 650,380 880,610" fill="#8FC1AE"/><polygon points="450,110 650,380 880,610 600,610" fill="#6FAF97"/><polygon points="450,110 420,160 450,148 480,165" fill="#fff" opacity=".9"/><path d="M0,610 Q150,545 330,590 T700,580 T900,590 V640 H0Z" fill="#2E8B57"/>`;
+  s += `<polyline points="${ages.map((a) => ST[a].join(',')).join(' ')}" fill="none" stroke="#fff" stroke-width="9" stroke-dasharray="14 9" stroke-linecap="round"/>`;
+  for (const a of ages) {
+    const [x, y] = ST[a]; const g = a === 100; const r = g ? 30 : 24; const col = g ? '#B8860B' : stc(a);
+    s += `<g><circle cx="${x}" cy="${y}" r="${r}" fill="#fff" stroke="${col}" stroke-width="5"/><text x="${x}" y="${y + 6}" text-anchor="middle" font-size="${g ? 20 : 18}" font-weight="800" fill="${col}">${a}</text>`;
+    if ([45, 65, 80].includes(a)) s += `<line x1="${x + 20}" y1="${y - 22}" x2="${x + 20}" y2="${y - 58}" stroke="#1F3A5F" stroke-width="3"/><polygon points="${x + 20},${y - 58} ${x + 54},${y - 48} ${x + 20},${y - 38}" fill="#1F6FB2"/><text x="${x + 31}" y="${y - 44}" font-size="11" font-weight="800" fill="#fff">續</text>`;
+    s += '</g>';
+  }
+  s += `<line x1="450" y1="142" x2="450" y2="86" stroke="#1F3A5F" stroke-width="4"/><polygon points="450,86 490,98 450,110" fill="#C0392B"/><text x="450" y="228" text-anchor="middle" font-size="12" font-weight="800" fill="#fff" stroke="#B8860B" stroke-width=".5">百歲檢核：三軸 2–9</text>`;
+  // 年齡棋
+  const byAge = {}; P.forEach((p) => { (byAge[p.age] = byAge[p.age] || []).push(p); });
+  Object.entries(byAge).forEach(([a, ps]) => ps.forEach((p, i) => { const [x, y] = ST[a]; const px = x + (i - (ps.length - 1) / 2) * 26, py = y + 40; const act = S.active === p;
+    s += `<g><circle cx="${px}" cy="${py}" r="${act ? 15 : 12}" fill="${seatColor(p)}" stroke="${act ? '#fff' : 'none'}" stroke-width="3"/><text x="${px}" y="${py + 5}" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">${esc(p.name.slice(0, 1))}</text>${p.stalled ? `<text x="${px + 14}" y="${py - 8}" font-size="14">⏸</text>` : ''}</g>`; }));
+  return s + '</svg>';
+}
+
+/* ---------- 玩家面板 ---------- */
+function meter(p, k) {
+  let c = ''; for (let i = 0; i <= 12; i++) c += `<div class="cell ${i < 2 ? 'lo' : i > 9 ? 'hi' : ''} ${p[k] === i ? 'cur' : ''}" style="--c:${AXC[k]}">${i}</div>`;
+  return `<div class="meter"><b style="color:${AXC[k]}">${AXN[k]}</b><div class="cells">${c}</div></div>`;
+}
+function playerCard(p) {
+  const r = DATA.ROLES[p.role]; const act = activeCodes(p);
+  const chips = ['A', 'M', 'C', 'L', 'R'].map((c) => chip(c, p.prot[c] === true ? 'on' : p.prot[c] === false ? 'off' : 'none')).join('');
+  return `<div class="card pl ${S.active === p ? 'act' : ''}" style="--c:${seatColor(p)}"><div class="hd"><span class="dot" style="background:${seatColor(p)}">${esc(p.name.slice(0, 1))}</span><span class="nm">${esc(p.name)}</span><span class="tag">${r.short}${p.human ? '・真人' : '・電腦'}</span><span class="tag gold">${p.age} 歲</span>${p.stalled ? '<span class="tag red">停滯中</span>' : ''}${p.arrived ? '<span class="tag gold">已登頂</span>' : ''}</div>${['h', 'f', 'm'].map((k) => meter(p, k)).join('')}<div class="chips">${chips}<span class="muted" style="margin-left:6px">${p.last ? '本輪：' + p.last.place + p.last.lv + ' ' + p.last.name : ''}</span></div></div>`;
+}
+function logAdd(msg, kind = '') { S.logs = S.logs || []; S.logs.unshift(`<div class="${kind}">${msg}</div>`); if (S.logs.length > 80) S.logs.pop(); }
+function renderGame() {
+  const G = S.G; if (!G) return;
+  $('#hdr').innerHTML = `<div class="row" style="justify-content:space-between"><div><b style="font-size:18px">第 ${G.round} 輪</b> <span class="muted">每輪＝5年｜先手：${esc(G.P[G.first % 3].name)}</span></div><div class="steps">${STEPS.map((t, i) => `<span class="step ${S.step === i ? 'on' : ''}">${t}</span>`).join('')}</div></div>`;
+  $('#board').innerHTML = boardSVG();
+  $('#players').innerHTML = G.P.map(playerCard).join('');
+  $('#log').innerHTML = (S.logs || []).join('');
+  renderFacil();
+}
+
+/* ---------- 人類決策 ---------- */
+const who = (p) => `<span class="dot" style="background:${seatColor(p)};width:22px;height:22px;font-size:11px">${esc(p.name.slice(0, 1))}</span> ${esc(p.name)}`;
+const ui = {
+  G: null,
+  async askGoal(p, two) {
+    S.G = this.G; await handoff(p, '請選一張祕密「人生目標卡」。別讓其他人看到。');
+    const id = await ask(`<h2>${who(p)}：選擇你的祕密人生目標</h2><p class="muted">目標會影響結算加分（完全達成 3 分、部分 1 分）。它不是任務，是你想要的人生。</p><div class="opts">${two.map((g) => `<button class="opt" data-v="${g.id}"><b>${g.id}　${esc(g.name)}</b><small>完全達成：${esc(g.cond)}<br>部分達成：${esc(g.part)}</small></button>`).join('')}</div>`);
+    return id;
+  },
+  async askRenew(p, need) {
+    await sleep(0); S.active = p; renderGame();
+    const html = `<h2>${who(p)}：${p.age} 歲續保</h2><p class="muted">每張有效保障續保需付 1 金錢（你有 ${p.m}）。不續保就會失效。</p><div class="opts">${need.map((c) => `<button class="opt sel" data-v="${c}" data-toggle><b>${chip(c)} ${DATA.PROT[c].name}</b><small>點一下切換：續保／放棄</small></button>`).join('')}<button class="opt" data-v="ok" data-confirm data-base="確認（續保 {n} 張）" style="text-align:center;background:var(--navy);color:var(--bg)"><b>確認（續保 ${need.length} 張）</b></button></div>`;
+    return ask(html, () => { let keep = [...$('#sheet').querySelectorAll('[data-toggle].sel')].map((b) => b.dataset.v); return keep.slice(0, p.m); });
+  },
+  async askAnnuity(p) { return ask(`<h2>${who(p)}：年金給付</h2><p class="muted">65 歲起，每輪年金可轉為「金錢＋1」或「幸福＋1」（退休現金流可以換成生活品質）。</p><div class="opts"><button class="opt" data-v="m"><b>金錢 ＋1</b><small>目前 ${p.m}</small></button><button class="opt" data-v="f"><b>幸福 ＋1</b><small>目前 ${p.f}</small></button></div>`); },
+  async askBuy(p) {
+    S.active = p; renderGame(); const age = p.age;
+    const rows = ['A', 'M', 'C', 'L', 'R'].map((c) => { const pc = DATA.PROT[c], pi = priceInfo(c, p); const own = p.prot[c] === true; const poor = p.m < pi.price; const tags = (pi.surcharge ? '<span class="badge bad">體況加費 +1</span>' : '') + (pi.discount ? '<span class="badge ok">外溢折抵 −1</span>' : '');
+      return `<button class="opt" data-v="${c}" ${own || poor ? 'disabled' : ''}><b>${chip(c)} ${pc.name}　價格 ${pi.price}${own ? '（已持有）' : p.prot[c] === false ? '（已失效，可重新投保）' : ''}</b><small>${pc.kind}｜限額 ${pc.limit}${pc.time ? '｜可取消停滯' : ''}${pc.once ? '｜一次性' : ''}${pc.centen ? '｜80歲免續保' : ''}${pc.circle ? '｜守護圈：理賠健康＋1' : ''}<br>保：${pc.cover}｜不保：${pc.no}</small>${tags}</button>`; }).join('');
+    const v = await ask(`<h2>${who(p)}：保障階段（${age} 歲）</h2><p class="muted">金錢 ${p.m}。每輪最多買 1 張；健康≥7 購買折抵 1、健康≤3 醫療險／壽險重傷險加費 1。</p><div class="opts">${rows}<button class="opt" data-v="skip" style="text-align:center"><b>這輪不買</b></button></div>`);
+    return v === 'skip' ? null : v;
+  },
+  async askAction(p) {
+    S.active = p; S.step = 1; renderGame(); await handoff(p, '請秘密選一張行動卡，其他玩家先別看。');
+    const col = { 戶外: 'var(--green)', 家: 'var(--orange)', 公司: 'var(--blue)' };
+    const cols = ['戶外', '家', '公司'].map((pl) => `<div class="acol"><h3 style="background:${col[pl]}">${pl}</h3>${DATA.ACTIONS.filter((a) => a.place === pl).map((a) => { const n = { h: clampV(p.h + (a.d.h || 0)), f: clampV(p.f + (a.d.f || 0)), m: clampV(p.m + (a.d.m || 0)) }; const bad = ['h', 'f', 'm'].some((k) => n[k] < 2 || n[k] > 9); return `<button class="opt" data-v="${a.id}"><b>${a.name}</b><span class="dots">${'●'.repeat(a.lv)}${'○'.repeat(3 - a.lv)}</span><div style="font-size:13px">${fxLine(a.d)}</div><div class="pv">→ ${['h', 'f', 'm'].map((k) => `<span class="${n[k] < 2 || n[k] > 9 ? 'bad' : ''}">${n[k]}</span>`).join('／')}${bad ? ' ⚠' : ''}</div></button>`; }).join('')}</div>`).join('');
+    return ask(`<h2>${who(p)}：選擇本輪行動（${p.age} 歲）</h2><p class="muted">目前 H${p.h}／F${p.f}／M${p.m}。結算後若任一軸 &lt;2 或 ≥10（⚠），會抽失衡事件。</p><div class="acts">${cols}</div>`);
+  },
+  async askOption(p, ev, okArr) {
+    S.active = p; renderGame();
+    return +(await ask(`<h2>${who(p)}：面對事件</h2>${evCard(ev, null)}<div class="opts">${ev.opts.map((o, i) => `<button class="opt" data-v="${i}" ${okArr[i] ? '' : 'disabled'}><b>${'①②③'[i]} ${esc(o.t)}</b>${okArr[i] ? '' : '<small>金錢不足，無法選擇</small>'}</button>`).join('')}</div>`));
+  },
+  async askClaim(p, ev, elig, info) {
+    S.active = p; renderGame();
+    const v = await ask(`<h2>${who(p)}：要啟動保障嗎？</h2>${evCard(ev, null)}<p class="muted">金錢損失 ${info.loss}${info.stall ? '，且本事件會讓你停滯' : ''}。每個事件最多啟動 1 張。</p><div class="opts">${elig.map((c) => { const pc = DATA.PROT[c]; return `<button class="opt" data-v="${c}"><b>${chip(c)} 使用${pc.name}</b><small>減免金錢損失 ${Math.min(pc.limit, info.loss)}${pc.time && info.stall ? '；取消停滯' : ''}${c === RULES.circleCode ? '；守護圈服務：健康＋1' : ''}${pc.once ? '；一次性給付' : ''}</small></button>`; }).join('')}<button class="opt" data-v="none" style="text-align:center"><b>不使用</b></button></div>`);
+    return v === 'none' ? null : v;
+  },
+  async askLapse(p, act) { return ask(`<h2>${who(p)}：保單停效</h2><p class="muted">繳不出保費時，保障會先被犧牲。請選一張翻面失效。</p><div class="opts">${act.map((c) => `<button class="opt" data-v="${c}"><b>${chip(c)} ${DATA.PROT[c].name}</b></button>`).join('')}</div>`); },
+  async askBonus(p) {
+    S.active = p; S.step = 4; renderGame();
+    return ask(`<h2>${who(p)}：成長加值</h2><p class="muted">每輪都能把任一軸 +1（上限 12）。注意：≥10 會進入過載區。</p><div class="opts">${['h', 'f', 'm'].map((k) => `<button class="opt" data-v="${k}" ${p[k] >= 12 ? 'disabled' : ''}><b style="color:${AXC[k]}">${AXN[k]} ＋1</b><small>${p[k]} → ${Math.min(12, p[k] + 1)}${p[k] + 1 >= 10 ? '（進入過載區）' : ''}</small></button>`).join('')}</div>`);
+  },
+  async notify(type, d) {
+    const G = this.G; S.G = G; const fast = S.speed === 'fast' || humans().length === 0;
+    switch (type) {
+      case 'start': renderGame(); logAdd('遊戲開始：25 歲出發，目標是通過百歲檢核登頂。', 'k-ev'); break;
+      case 'roundStart': S.step = 0; S.active = null; renderGame(); logAdd(`── 第 ${G.round} 輪（${G.P.map((p) => p.age).join('／')} 歲）──`, 'k-ev'); if (G.round === 1) toast('第 1 輪：先保障、再行動'); break;
+      case 'turn': S.active = d.p; S.step = 0; renderGame(); break;
+      case 'centen': logAdd(`${esc(d.p.name)}：${d.codes.join('、')} 80 歲免續保（保障至 100 歲）`, 'k-good'); await facil('centen', d.p); break;
+      case 'renewed': logAdd(`${esc(d.p.name)} ${d.p.age} 歲續保：留 ${d.kept.join('、') || '無'}${d.need.length - d.kept.length ? '，失效 ' + d.need.filter((c) => !d.kept.includes(c)).join('、') : ''}`); if (d.p.age === 45) await facil('renew45', d.p); break;
+      case 'annuity': logAdd(`${esc(d.p.name)} 年金：${AXN[d.ax]}＋1`, 'k-good'); break;
+      case 'bought': logAdd(`${esc(d.p.name)} 購買 ${d.code} ${DATA.PROT[d.code].name}（${d.pi.price}${d.pi.discount ? '，外溢折抵' : ''}${d.pi.surcharge ? '，體況加費' : ''}）`, 'k-good'); renderGame(); if (d.pi.discount) await facil('spill', d.p); await facil('firstBuy', d.p); break;
+      case 'reveal': {
+        S.step = 1; S.active = null; renderGame();
+        d.reveal.forEach((r) => logAdd(`${esc(r.p.name)} 選了「${r.a.place}${r.a.lv} ${r.a.name}」：${fxLine(r.a.d).replace(/<[^>]+>/g, '')}`));
+        await ask(`<h2>同時亮牌</h2><p class="muted">所有人的行動卡同時翻開並結算。</p><div class="opts">${d.reveal.map((r) => `<div class="opt" style="cursor:default"><b>${who(r.p)}：${r.a.place}${r.a.lv} ${r.a.name}</b><small>${fxLine(r.a.d)}　→　H${r.p.h}／F${r.p.f}／M${r.p.m}${[r.p.h, r.p.f, r.p.m].some((x) => x < 2 || x > 9) ? ' ⚠' : ''}</small></div>`).join('')}<button class="opt" data-v="ok" style="text-align:center"><b>繼續：平衡檢查與事件</b></button></div>`);
+        break; }
+      case 'eventDrawn': S.step = d.failing ? 2 : 3; S.active = d.p; renderGame(); if (d.failing) logAdd(`${esc(d.p.name)} ${AXN[d.failing.ax]}${d.failing.dir === 'low' ? '不足' : '過載'}，抽失衡事件`, 'k-bad'); break;
+      case 'eventResolved': {
+        S.step = 3; renderGame(); const { p, ev, res } = d; const loss = ['h', 'f', 'm'].some((k) => res.d[k] < 0);
+        logAdd(`${esc(p.name)}｜${ev.id} ${esc(ev.title)} → ${vals(res.after)}${res.used ? '，理賠 ' + res.used : ''}${res.unins ? '，不可保' : ''}${res.stall ? '，停滯' : ''}`, res.unins || res.stall ? 'k-bad' : 'k-ev'); renderGame();
+        const card = `<h2>${who(p)}：事件結果</h2>${evCard(ev, d.failing)}${res.notes.length ? `<p class="muted">${res.notes.map(esc).join('；')}</p>` : ''}${resBox(res, p)}<div class="lesson"><b>教育回饋：</b>${esc(ev.lesson)}</div>`;
+        if (p.human) await ask(card + '<div class="opts"><button class="opt" data-v="ok" style="text-align:center"><b>繼續</b></button></div>');
+        else if (!fast) await ask(card + '<div class="opts"><button class="opt" data-v="ok" style="text-align:center"><b>繼續</b></button></div>');
+        else { toast(`${p.name}：${ev.title}`, 1100); await sleep(humans().length ? 900 : 260); }
+        if (res.unins && loss) await facil('unins', p, 2); if (res.canceled) await facil('cancel', p); if (res.svc) await facil('circle', p);
+        break; }
+      case 'grow': {
+        const { p, moved, why, ax } = d; S.step = 4; renderGame();
+        logAdd(`${esc(p.name)} ${moved ? '前進到 ' + p.age + ' 歲' : why === 'stall' ? '停滯，年齡不動' : '百歲檢核未通過，留在 ' + p.age + ' 歲'}；${AXN[ax]}＋1`, why ? 'k-bad' : 'k-good'); renderGame();
+        if (why === 'gate') { if (p.human) await ask(`<h2>${who(p)}：百歲檢核未通過</h2><p>要登上 100 歲，三軸必須都在安全區 2–9。這輪你留在 ${p.age} 歲，仍可獲得成長加值。</p><div class="opts"><button class="opt" data-v="ok" style="text-align:center"><b>繼續</b></button></div>`); await facil('gate', p); }
+        else if (p.human) toast(moved ? `前進到 ${p.age} 歲` : '停滯：本輪不前進，但仍＋1', 1100);
+        if (p.arrived) logAdd(`${esc(p.name)} 登上 100 歲！`, 'k-good');
+        break; }
+      case 'roundEnd': renderGame(); await sleep(humans().length ? 150 : 60); break;
+      case 'gameOver': S.active = null; renderGame(); await sleep(300); showReview(); break;
+    }
+  },
+};
+const clampV = (x) => Math.max(0, Math.min(12, x));
+
+/* ---------- 設定 ---------- */
+function setupScreen() {
+  S.G = null; S.logs = []; S.seen = {}; S.facLog = [];
+  const saved = store.get('ns100.setup', { humans: 1, names: ['玩家甲', '玩家乙', '玩家丙'], roles: ['ceo', 'civil', 'care'], ai: 'smart' });
+  const cfg = saved; S.cfg = cfg;
+  $('#main').innerHTML = `<div class="hero"><svg viewBox="0 0 900 360"><defs><linearGradient id="hs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CDE5DE"/><stop offset="1" stop-color="#FBF4E1"/></linearGradient></defs><rect width="900" height="360" fill="url(#hs)"/><circle cx="740" cy="90" r="70" fill="#F4C430" opacity=".28"/><circle cx="740" cy="90" r="40" fill="#F0B428"/><path d="M0,250 Q120,170 260,230 T520,210 T900,190 V360 H0Z" fill="#A5CDBE"/><path d="M0,290 Q160,220 340,270 T700,250 T900,260 V360 H0Z" fill="#5FA68B"/><path d="M0,330 Q200,290 420,320 T900,310 V360 H0Z" fill="#1F6B5C"/><polyline points="70,320 220,285 380,282 520,255 640,215 700,150 740,92" fill="none" stroke="#fff" stroke-width="8" stroke-dasharray="14 9" stroke-linecap="round"/><g fill="#fff" stroke="#1F3A5F" stroke-width="4"><circle cx="70" cy="320" r="20"/><circle cx="380" cy="282" r="20"/><circle cx="640" cy="215" r="20"/><circle cx="740" cy="92" r="26" stroke="#B8860B"/></g><g font-size="15" font-weight="800" fill="#1F3A5F" text-anchor="middle"><text x="70" y="325">25</text><text x="380" y="287">45</text><text x="640" y="220">65</text><text x="740" y="98" fill="#B8860B" font-size="17">100</text></g><polygon points="740,66 780,78 740,90" fill="#C0392B"/></svg><div class="t"><span>NS100 人生馬拉松計畫｜南山大學 保險教育桌遊 數位版 v2.1</span><b>百歲人生：平衡之路</b></div></div>
+  <div class="layout" style="margin-top:12px"><div class="card pad"><h2>開始一局</h2><p class="muted">3 位玩家從 25 歲走到 100 歲，每輪 5 年。在健康、幸福、金錢三軸間取捨，面對 72 張人生事件，並決定如何用保障分擔「財務後果」。同機輪流操作，不需連網。</p>
+  <h3>真人玩家人數</h3><div class="seg" id="segH">${[0, 1, 2, 3].map((n) => `<button data-n="${n}" class="${cfg.humans === n ? 'on' : ''}">${n === 0 ? '觀戰' : n + ' 人'}</button>`).join('')}</div>
+  <h3 style="margin-top:12px">座位與角色</h3><div class="grid" id="seats"></div>
+  <h3 style="margin-top:12px">電腦玩家保險策略</h3><div class="seg" id="segAI"><button data-a="smart" class="${cfg.ai === 'smart' ? 'on' : ''}">聰明投保</button><button data-a="none" class="${cfg.ai === 'none' ? 'on' : ''}">不投保</button></div>
+  <h3 style="margin-top:12px">節奏</h3><div class="seg" id="segS"><button data-s="step" class="${S.speed === 'step' ? 'on' : ''}">逐步（每個事件都看）</button><button data-s="fast" class="${S.speed === 'fast' ? 'on' : ''}">快速（電腦事件自動）</button></div>
+  <div class="row" style="margin-top:16px"><button class="btn pri big" id="go">開始遊戲</button><button class="btn" id="rules">規則速查</button></div></div>
+  <div class="card pad"><h2>這個應用程式是什麼</h2><p>企劃書第四章「數位版與引導師後台」的可玩原型，完整實作 v2.1 規則：外溢折抵、長照險與年金險 80 歲免續保、守護圈服務、年金擇一，以及 72 張事件卡。</p><ul class="muted" style="padding-left:18px"><li><b>遊戲：</b>與桌遊同規則；同時亮牌；電腦玩家補足 3 人。</li><li><b>引導師模式：</b>在關鍵時刻跳出提問，並附 100 分鐘工作坊計時。</li><li><b>復盤報告：</b>三軸走勢、保障使用、不可保損失，自動產生「我的三個提問」。</li><li><b>隱私：</b>所有資料只存在本機瀏覽器，不上傳、不蒐集個資。</li></ul><div class="row"><label class="row"><input type="checkbox" id="fa" ${S.facilOn ? 'checked' : ''}> 啟用引導師模式</label></div><p class="muted">教學模型，不代表任何保險商品，不構成招攬。數值為簡化後的教學設計，不是保費或給付精算。</p></div></div>`;
+  const seats = () => { $('#seats').innerHTML = [0, 1, 2].map((i) => { const hum = i < cfg.humans; return `<div class="seat"><span class="dot" style="background:${SEATC[i]}">${i + 1}</span><div class="row">${hum ? `<input type="text" data-nm="${i}" value="${esc(cfg.names[i])}" maxlength="6" style="width:110px" aria-label="玩家名稱">` : `<b>電腦${'甲乙丙'[i]}</b>`}<select data-rl="${i}">${Object.entries(DATA.ROLES).map(([k, r]) => `<option value="${k}" ${cfg.roles[i] === k ? 'selected' : ''}>${r.name}（H${r.start.h}／F${r.start.f}／M${r.start.m}）</option>`).join('')}</select></div></div>`; }).join(''); };
+  seats();
+  $('#segH').onclick = (e) => { const b = e.target.closest('[data-n]'); if (!b) return; cfg.humans = +b.dataset.n; [...$('#segH').children].forEach((x) => x.classList.toggle('on', x === b)); seats(); };
+  $('#segAI').onclick = (e) => { const b = e.target.closest('[data-a]'); if (!b) return; cfg.ai = b.dataset.a; [...$('#segAI').children].forEach((x) => x.classList.toggle('on', x === b)); };
+  $('#segS').onclick = (e) => { const b = e.target.closest('[data-s]'); if (!b) return; S.speed = b.dataset.s; store.set('ns100.speed', S.speed); [...$('#segS').children].forEach((x) => x.classList.toggle('on', x === b)); };
+  $('#seats').onchange = (e) => { const t = e.target; if (t.dataset.rl !== undefined) { const i = +t.dataset.rl, nv = t.value, old = cfg.roles[i]; const j = cfg.roles.findIndex((r, k) => k !== i && r === nv); if (j >= 0) cfg.roles[j] = old; cfg.roles[i] = nv; seats(); } if (t.dataset.nm !== undefined) cfg.names[+t.dataset.nm] = t.value.trim() || '玩家'; };
+  $('#fa').onchange = (e) => { S.facilOn = e.target.checked; store.set('ns100.facil', S.facilOn); syncFacBtn(); };
+  $('#rules').onclick = showRules; $('#go').onclick = startGame;
+}
+async function startGame() {
+  const cfg = S.cfg; store.set('ns100.setup', cfg);
+  const names = [0, 1, 2].map((i) => (i < cfg.humans ? cfg.names[i] || '玩家' : '電腦' + '甲乙丙'[i]));
+  const players = [0, 1, 2].map((i) => ({ name: names[i], role: cfg.roles[i], human: i < cfg.humans, policy: i < cfg.humans ? 'smart' : cfg.ai }));
+  $('#main').innerHTML = `<div id="hdr" class="card pad"></div><div class="layout" style="margin-top:12px"><div class="grid"><div class="card board" id="board"></div><div id="facil" class="fac hidden"></div><div class="card pad"><h3>遊戲紀錄</h3><div class="log" id="log"></div></div></div><div class="grid" id="players"></div></div><div class="legend card pad" style="margin-top:12px"><span><i style="background:var(--low)"></i>0–1 不足區</span><span><i style="background:var(--safe)"></i>2–9 安全區</span><span><i style="background:var(--high)"></i>10–12 過載區</span><span>續＝續保年齡</span></div>`;
+  S.timer = { phase: 0, left: PHASES[0][1] * 60, run: false }; S.logs = [];
+  const G = await runGame({ seed: (Date.now() & 0xffffff) + 1, players }, ui);
+  S.G = G;
+}
+
+/* ---------- 規則速查 ---------- */
+function showRules() {
+  ask(`<h2>規則速查（v2.1）</h2><div class="stats" style="margin-bottom:8px"><div class="stat"><b>25→100</b><span>每輪 5 年</span></div><div class="stat"><b>2–9</b><span>安全區</span></div><div class="stat"><b>0–12</b><span>軸線範圍</span></div></div>
+  <table class="tbl"><tr><th>步驟</th><th style="text-align:left">做什麼</th></tr>
+  <tr><td>① 保障</td><td style="text-align:left">45／65／80 歲續保（每張 1，長照險與年金險 80 歲免）；65 歲起年金：金錢或幸福＋1；最多買 1 張（健康≥7 折抵 1；健康≤3 醫療險／壽險重傷險加費 1）</td></tr>
+  <tr><td>② 行動</td><td style="text-align:left">同時亮出 1 張行動卡並結算</td></tr>
+  <tr><td>③ 檢查</td><td style="text-align:left">三軸都在 2–9：抽人生事件；否則抽失衡事件（離安全區最遠的那軸）</td></tr>
+  <tr><td>④ 事件</td><td style="text-align:left">依卡面結算；有可理賠代碼且有有效保障，可啟動 1 張。壽險重傷險、長照險可取消停滯但為一次性；長照險理賠時健康＋1。失衡事件後仍在區外：回到 3（低）或 9（高）</td></tr>
+  <tr><td>⑤ 成長</td><td style="text-align:left">沒停滯就前進 5 歲（95→100 需三軸皆在 2–9），停滯則不動；不論是否前進，任一軸＋1</td></tr></table>
+  <p class="muted" style="margin-top:8px"><b>計分：</b>三軸合計＋2×最低軸＋2×有效保障（最多 5 張）＋人生目標（3／1／0）。同輪抵達者比品質分，再比最低軸，仍相同則共同獲勝。</p>
+  <div class="opts"><button class="opt" data-v="ok" style="text-align:center"><b>關閉</b></button></div>`);
+}
+
+/* ---------- 復盤 ---------- */
+function questions(p) {
+  const q = []; const act = activeCodes(p); const goal = DATA.GOALS.find((g) => g.id === p.goal);
+  if (p.unins >= 2) q.push([9, `你遇到了 ${p.unins} 次「不可保」的事件。如果發生在現實裡，你原本是怎麼準備的？誰會是你的第一道支持？`]);
+  if (p.fails >= 2) q.push([8, `你被迫面對 ${p.fails} 次失衡事件。哪一條軸最常被你犧牲？現實中，是誰在替你補這個缺口？`]);
+  if (p.stallsCanceled >= 1) q.push([8, `你用定額給付型保障取消過 ${p.stallsCanceled} 次停滯。你買到的是錢還是時間？現實中，你最缺的是哪一個？`]);
+  if (p.stalls >= 3) q.push([7, `你停滯了 ${p.stalls} 次。當時間被卡住時，你最希望身邊有誰、有什麼資源？`]);
+  if (Object.keys(p.prot).length === 0) q.push([9, '整局你都沒有保障。沒有保障時，你的第一道防線是現金、家人，還是健康？這道防線撐得了多久？']);
+  if (p.firstBuyAge !== null && p.firstBuyAge >= 45) q.push([7, `你到 ${p.firstBuyAge} 歲才第一次投保。如果提早二十年開始準備，你的選擇會有什麼不同？`]);
+  if (p.paid >= 10) q.push([6, `你一共付出 ${p.paid} 點保費。多少保障才不會壓垮你的現金流？現實中你怎麼判斷「剛剛好」？`]);
+  if (!act.includes('L') && !act.includes('R')) q.push([6, '活到 100 歲，誰來照顧你？你的現金流夠不夠撐到那一天？']);
+  if (p.spillUsed >= 1) q.push([5, `你有 ${p.spillUsed} 次因為健康好而少付保費。在現實裡，「健康」可以為你換到什麼？`]);
+  if (p.m <= 3) q.push([5, '你的金錢在結尾偏低。你願意為了什麼讓它再低一點？又為了什麼要把它拉回來？']);
+  if (goal) q.push([4, `你的人生目標是「${goal.name}」。${goal.ask}`]);
+  q.push([2, '哪一個選擇你明知道不好還是選了？當時你在換什麼？'], [2, '哪一次事件最讓你意外？它是可保的，還是不可保的？'], [1, '遊戲中的三軸，哪一軸在現實裡最容易被你忽略？']);
+  return q.sort((a, b) => b[0] - a[0]).slice(0, 3).map((x) => x[1]);
+}
+function chart(p) {
+  const H = p.history, W = 640, Ht = 230, L = 34, B = 24, n = Math.max(1, H.length - 1); const x = (i) => L + (W - L - 8) * i / n, y = (v) => Ht - B - (Ht - B - 10) * v / 12;
+  let s = `<svg viewBox="0 0 ${W} ${Ht}" style="width:100%;height:auto"><rect x="${L}" y="${y(9)}" width="${W - L - 8}" height="${y(2) - y(9)}" fill="var(--safe)"/>`;
+  for (const v of [0, 2, 4, 6, 8, 10, 12]) s += `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="var(--sub)">${v}</text><line x1="${L}" x2="${W - 8}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width=".6"/>`;
+  [['h', 'var(--green)'], ['f', 'var(--orange)'], ['m', 'var(--blue)']].forEach(([k, c]) => { s += `<polyline fill="none" stroke="${c}" stroke-width="3" stroke-linejoin="round" points="${H.map((r, i) => x(i) + ',' + y(r[k])).join(' ')}"/>`; });
+  H.forEach((r, i) => { if (r.stalled) s += `<circle cx="${x(i)}" cy="${Ht - B + 8}" r="4" fill="var(--red)"/>`; if (i % 2 === 0 || i === H.length - 1) s += `<text x="${x(i)}" y="${Ht - 4}" text-anchor="middle" font-size="10" fill="var(--sub)">${i}</text>`; });
+  return s + '</svg><div class="legend"><span><i style="background:var(--green)"></i>健康</span><span><i style="background:var(--orange)"></i>幸福</span><span><i style="background:var(--blue)"></i>金錢</span><span><i style="background:var(--safe)"></i>安全區</span><span><i style="background:var(--red);border-radius:50%"></i>停滯</span><span>橫軸：輪次（每輪＝5年）</span></div>';
+}
+function showReview(sel) {
+  const G = S.G; const P = G.P; const isCh = (p) => G.champions.includes(p);
+  const rows = [...P].sort((a, b) => finalScore(b).total - finalScore(a).total).map((p) => { const f = finalScore(p); const g = DATA.GOALS.find((x) => x.id === p.goal); return `<tr class="${isCh(p) ? 'win' : ''}"><td>${isCh(p) ? '🏆 ' : ''}${esc(p.name)}<br><span class="muted">${DATA.ROLES[p.role].short}</span></td><td>${p.age}</td><td>${p.h}／${p.f}／${p.m}</td><td>${activeCodes(p).map((c) => chip(c)).join('') || '—'}</td><td>${f.base}</td><td>${f.goal}<br><span class="muted">${g.name}</span></td><td><b>${f.total}</b></td></tr>`; }).join('');
+  const me = sel !== undefined ? P[sel] : (humans()[0] || P[0]); const idx = P.indexOf(me); const st = (v, l) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`;
+  const win = G.champions.map((p) => esc(p.name)).join('、'); const first = G.winners.length;
+  $('#main').innerHTML = `<div class="card pad"><h2>🏁 遊戲結束：${first ? win + (G.champions.length > 1 ? ' 共同獲勝' : ' 獲勝') : '無人登頂，以年齡與品質分排序'}</h2><p class="muted">第 ${G.round} 輪結束。${G.tie ? '本輪有多位玩家同時抵達，依品質分、再依最低軸決勝。' : ''}</p><table class="tbl"><tr><th>玩家</th><th>年齡</th><th>H／F／M</th><th>有效保障</th><th>基本分</th><th>目標</th><th>總分</th></tr>${rows}</table><p class="muted">基本分＝三軸合計＋2×最低軸＋2×有效保障（最多5張）。人生目標在此時公開。</p></div>
+  <div class="card pad" style="margin-top:12px"><div class="row"><h2 style="margin:0">復盤報告</h2><div class="seg" id="segP">${P.map((p, i) => `<button data-i="${i}" class="${i === idx ? 'on' : ''}">${esc(p.name)}</button>`).join('')}</div></div>
+  <h3 style="margin-top:12px">三軸走勢</h3>${chart(me)}
+  <h3 style="margin-top:12px">這局你的數字</h3><div class="stats">${st(me.claimTotal, '理賠減免金額')}${st(me.paid, '保費與續保支出')}${st(me.unins, '不可保損失事件')}${st(me.stalls, '停滯次數')}${st(me.stallsCanceled, '取消停滯')}${st(me.fails, '失衡事件')}${st(me.spillUsed, '外溢折抵')}${st(me.firstBuyAge === null ? '—' : me.firstBuyAge, '首次投保年齡')}</div>
+  <h3 style="margin-top:12px">我的三個提問</h3>${questions(me).map((t, i) => `<div class="qbox">${i + 1}. ${esc(t)}</div>`).join('')}
+  <h3 style="margin-top:12px">回到現實，我會做的一件小事</h3><textarea id="pledge" placeholder="例如：這週和家人聊一次「如果需要被照顧，我們怎麼分工」。"></textarea><div class="row" style="margin-top:8px"><button class="btn" id="copy">複製提問與承諾</button><button class="btn" id="print">列印</button><span class="muted" id="cmsg"></span></div><p class="muted">資料只存在你的瀏覽器，不會上傳。</p></div>
+  <div class="row" style="margin-top:12px" id="noprint"><button class="btn pri big" id="again">再玩一局</button><button class="btn" id="back">回到設定</button></div>`;
+  $('#segP').onclick = (e) => { const b = e.target.closest('[data-i]'); if (b) showReview(+b.dataset.i); };
+  const ta = $('#pledge'); ta.value = store.get('ns100.pledge.' + idx, ''); ta.oninput = () => store.set('ns100.pledge.' + idx, ta.value);
+  $('#copy').onclick = async () => { const text = `【我的三個提問｜百歲人生：平衡之路】\n${questions(me).map((t, i) => (i + 1) + '. ' + t).join('\n')}\n\n【我會做的一件小事】\n${ta.value || '（尚未填寫）'}`; try { await navigator.clipboard.writeText(text); $('#cmsg').textContent = '已複製'; } catch (e) { ta.select(); $('#cmsg').textContent = '請手動複製'; } };
+  $('#print').onclick = () => { try { window.print(); } catch (e) { $('#cmsg').textContent = '請使用瀏覽器的列印功能'; } }; $('#again').onclick = () => { setupScreen(); startGame(); }; $('#back').onclick = setupScreen;
+  window.scrollTo(0, 0);
+}
+
+/* ---------- 啟動 ---------- */
+function syncFacBtn() { const b = $('#btnFac'); b.classList.toggle('on', S.facilOn); b.textContent = S.facilOn ? '引導師：開' : '引導師：關'; renderFacil(); }
+$('#btnFac').onclick = () => { S.facilOn = !S.facilOn; store.set('ns100.facil', S.facilOn); syncFacBtn(); const f = $('#fa'); if (f) f.checked = S.facilOn; };
+$('#btnRules').onclick = showRules; $('#btnTheme').onclick = () => { const r = document.documentElement; const dark = r.getAttribute('data-theme') === 'dark' || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches); r.setAttribute('data-theme', dark ? 'light' : 'dark'); store.set('ns100.theme', dark ? 'light' : 'dark'); };
+$('#btnHome').onclick = async () => { if (S.G && !S.G.over) { const v = await ask('<h2>放棄這一局？</h2><p class="muted">目前進度不會保留。</p><div class="opts"><button class="opt" data-v="yes"><b>放棄並回到首頁</b></button><button class="opt" data-v="no"><b>繼續遊戲</b></button></div>'); if (v !== 'yes') return; } location.reload(); };
+{ const t = store.get('ns100.theme', null); if (t) document.documentElement.setAttribute('data-theme', t); }
+syncFacBtn(); setupScreen();
+window.__app = { S, ui, startGame, setupScreen };
+
+</script>
+</body>
+</html>
